@@ -2,6 +2,11 @@
 
 **SZL Holdings engineering cookbook.** A curated set of skills (Anthropic SKILL.md pattern) used by every engineer and every agent across the SZL Holdings platform.
 
+[![Skills](https://img.shields.io/badge/skills-9-2DA44E?style=flat-square)](#catalog)
+[![Pattern](https://img.shields.io/badge/pattern-Anthropic%20SKILL.md-805AD5?style=flat-square)](https://github.com/anthropics/anthropic-cookbook)
+[![License](https://img.shields.io/badge/license-Apache--2.0-2DA44E?style=flat-square)](./LICENSE)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/szl-holdings/szl-cookbook/badge)](https://securityscorecards.dev/viewer/?uri=github.com/szl-holdings/szl-cookbook)
+
 These skills encode the practices that make our codebase reproducible, auditable, and Series-A defensible:
 
 - **Pre-flight thinking** before code is written
@@ -44,6 +49,13 @@ Read the SKILL.md. Apply the checklist. Cite the skill in your PR description.
 
 Adapted from the public **Awesome Claude Code**, **Antigravity Awesome Skills**, **Everything Claude Code**, and **Claude Agent Blueprints** collections, then specialized to the SZL Holdings monorepo conventions.
 
+## Related
+
+- **Platform**: [szl-holdings/platform](https://github.com/szl-holdings/platform) (private) — 1,220 tests across 76 packages where these skills are exercised
+- **Runtime**: [szl-holdings/ouroboros](https://github.com/szl-holdings/ouroboros) — the bounded-loop substrate (218/218 tests verified 2026-05-12)
+- **Trust portal**: [szl-holdings/szl-trust](https://github.com/szl-holdings/szl-trust) — publishes CPS proof-chain run artifacts
+- **Thesis**: [szl-holdings/ouroboros-thesis](https://github.com/szl-holdings/ouroboros-thesis) — v1→v11 published, v12 in review
+
 ## License
 
-Apache 2.0
+Apache-2.0
