@@ -1,21 +1,44 @@
 cff-version: 1.2.0
-message: "If you reference these artifacts, please cite as below."
+message: "If you use this software, please cite it using the metadata below."
+title: "szl-cookbook — SZL Holdings engineering cookbook — Anthropic skills pattern covering pre-flight thinking, refactoring, review, and debugging."
+abstract: >-
+  SZL Holdings engineering cookbook — Anthropic skills pattern covering pre-flight thinking, refactoring, review, and debugging. Part of the SZL Holdings governed AI decision infrastructure,
+  built on the Ouroboros Thesis (DOI 10.5281/zenodo.19944926).
 type: software
-title: "SZL Holdings Engineering Cookbook: SKILL.md Pattern Library"
-abstract: "Curated set of engineering skills (Anthropic SKILL.md pattern) used by every engineer and every agent across the SZL Holdings platform."
+version: "1.0.0"
+date-released: "2026-01-01"
+license: Apache-2.0
 authors:
-  - family-names: "Lutar"
-    given-names: "Stephen P."
+  - family-names: Lutar
+    given-names: Stephen
+    name-particle: "P."
     name-suffix: "Jr."
-    orcid: "https://orcid.org/0009-0001-0110-4173"
     affiliation: "SZL Holdings"
     email: "stephen@szlholdings.com"
-repository-code: "https://github.com/szl-holdings/szl-cookbook"
+    orcid: "https://orcid.org/0009-0001-0110-4173"
 url: "https://github.com/szl-holdings/szl-cookbook"
-license: "Apache-2.0"
+repository-code: "https://github.com/szl-holdings/szl-cookbook"
 keywords:
-  - "agent-skills"
-  - "engineering-practices"
-  - "SKILL.md"
-  - "reproducibility"
-date-released: 2026-05-13
+  - szl-holdings
+  - ai-governance
+  - ouroboros-thesis
+identifiers:
+  - description: "Ouroboros Thesis — research foundation (Zenodo concept DOI)"
+    type: doi
+    value: "10.5281/zenodo.19944926"
+  - description: "ORCID iD of the principal author"
+    type: other
+    value: "https://orcid.org/0009-0001-0110-4173"
+preferred-citation:
+  type: software
+  title: "szl-cookbook — SZL Holdings engineering cookbook — Anthropic skills pattern covering pre-flight thinking, refactoring, review, and debugging."
+  authors:
+    - family-names: Lutar
+      given-names: Stephen
+      name-particle: "P."
+      name-suffix: "Jr."
+      affiliation: "SZL Holdings"
+      email: "stephen@szlholdings.com"
+      orcid: "https://orcid.org/0009-0001-0110-4173"
+  year: 2026
+  url: "https://github.com/szl-holdings/szl-cookbook"
