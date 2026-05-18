@@ -1,0 +1,18 @@
+{
+  "name": "szl-anatomy-evolved",
+  "version": "1.0.0",
+  "description": "SZL Holdings — Anatomy Evolved v1 (anatomy-evolved-v1)",
+  "author": "Stephen P. Lutar Jr., SZL Holdings",
+  "license": "MIT",
+  "type": "module",
+  "engines": { "node": ">=20.0.0" },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "doctrine-check": "bash scripts/doctrine_check.sh",
+    "test:smoke": "bash scripts/run_smoke_tests.sh"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  }
+}
