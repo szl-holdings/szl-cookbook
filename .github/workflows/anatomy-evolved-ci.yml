@@ -1,0 +1,51 @@
+# anatomy-evolved-v1 CI — tsc + doctrine guard + smoke tests
+name: anatomy-evolved-ci
+on:
+  push:
+    paths:
+      - 'recipes/anatomy-evolved-v1/code/**'
+      - '.github/workflows/anatomy-evolved-ci.yml'
+  pull_request:
+    paths:
+      - 'recipes/anatomy-evolved-v1/code/**'
+permissions:
+  contents: read
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: recipes/anatomy-evolved-v1/code
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
+        with:
+          egress-policy: audit
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Setup Node 20
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: '20'
+      - name: Install
+        run: npm install
+      - name: TypeScript build (--noEmit)
+        run: npx tsc --noEmit
+      - name: Doctrine guard
+        run: |
+          set -euo pipefail
+          HITS=$(grep -rinE 'alloyscape|glass[ -]?wing|glasswing|mythos|stephen paul|perplexity computer' \
+            src/ lean/ tests/ 2>/dev/null \
+            | grep -v 'BANNED_TOKENS' \
+            | grep -v 'doctrine-guard' \
+            | wc -l)
+          if [ "$HITS" -gt 0 ]; then
+            echo "DOCTRINE VIOLATION: $HITS banned-token hits outside guard arrays"
+            exit 1
+          fi
+          echo "Doctrine guard: clean"
+      - name: Compile + run smoke tests
+        run: |
+          npx tsc -p tsconfig.test.json
+          echo '{"type":"commonjs"}' > dist-test/package.json
+          node dist-test/tests/smoke.js
