@@ -1,11 +1,16 @@
 /**
  * vessels-raz-nihyeh-risk.ts — shell-depth opacity scorer
  * Organ: vessels (LIMBS / EXTERNAL REACH)
+ *
+ * STATUS: TUTORIAL FIXTURE — runnable copy for the recipe smoke tests.
+ *   The CANONICAL implementation is:
+ *     vessels/web/src/lib/raz-nihyeh/raz-nihyeh-risk.ts
+ *
  * Source: 4QInstruction (4Q416 fr.2 ii–iii); Woogen, Macalester Classics 6:1 (2022)
- *         R04 §2 dss_raz_nihyeh_risk.ts
- *         Lean theorem: razNihyeh_mono_general (lutar-lean/Lutar/RazNihyeh/Monotone.lean)
  * Author: Stephen P. Lutar Jr., SZL Holdings
- * Invariant: score ∈ [0,1]; monotone non-decreasing in shellDepth
+ * Invariant: score ∈ [0,1]; monotone non-decreasing in shellDepth WITH
+ *   ALL OTHER FIELDS HELD CONSTANT (ceteris paribus). The universal claim
+ *   is documented in the canonical file as restricted to that scope.
  */
 
 export interface OwnershipNode {

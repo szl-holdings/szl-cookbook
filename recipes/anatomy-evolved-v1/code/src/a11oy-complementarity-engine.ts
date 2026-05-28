@@ -1,6 +1,11 @@
 /**
  * a11oy-complementarity-engine.ts — frame-pair dispatcher
  * Organ: a11oy (BRAIN / GOVERNANCE CORTEX)
+ *
+ * STATUS: TUTORIAL FIXTURE — runnable copy for the recipe smoke tests.
+ *   The CANONICAL implementation is:
+ *     a11oy/web/packages/a11oy-core/src/quantum/bohr_complementarity_engine.ts
+ *
  * Source: R07/R08 — quantum_bohr_complementarity_engine.ts
  *         Bohr (1928), Nature 121:580–590
  * Author: Stephen P. Lutar Jr., SZL Holdings
