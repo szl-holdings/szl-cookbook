@@ -1,9 +1,16 @@
 /**
  * amaru-qkan-fwp.ts — DARUAN activation + gated fast-weight programmer
  * Organ: amaru (HEART / SEQUENCE MEMORY)
+ *
+ * STATUS: TUTORIAL FIXTURE — runnable copy for smoke tests in this recipe.
+ *   The CANONICAL implementation is the source of truth in:
+ *     amaru/web/src/lib/qkan-fwp/qkan-fwp.ts
+ *   Keep the two byte-equivalent on the receipt-bearing surface
+ *   (rx/rz/daruanActivate/gatedUpdate/qkanFwpStep/initQKANFWP).
+ *
  * Source: arXiv:2605.06734 (Peng et al., 2026) — Gated QKAN-FWP
+ *         Nielsen & Chuang 2010, §4.2 (Rx/Rz unitary form)
  * Author: Stephen P. Lutar Jr., SZL Holdings
- * Repo: amaru/packages/amaru-core/src/qkan_fwp.ts
  */
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -33,24 +40,34 @@ export interface ForecastResult {
 
 // ─── DARUAN Core ─────────────────────────────────────────────────────────────
 
-interface QubitState {
+export interface QubitState {
   alpha: [number, number]; // [re, im] of |0⟩ amplitude
   beta:  [number, number]; // [re, im] of |1⟩ amplitude
 }
 
-function rx(s: QubitState, theta: number): QubitState {
+// R_x(θ) = exp(-i·θ·X/2) = cos(θ/2)·I − i·sin(θ/2)·X
+// [Nielsen & Chuang 2010, "Quantum Computation and Quantum Information", §4.2, eq. 4.4]
+// On a state ψ = (α, β) with α = α_re + i·α_im, β = β_re + i·β_im:
+//   α' = c·α + s·(β_im − i·β_re)
+//   β' = c·β + s·(α_im − i·α_re)
+// where c = cos(θ/2), s = sin(θ/2). The matrix is manifestly unitary: U†U = I.
+export function rx(s: QubitState, theta: number): QubitState {
   const c = Math.cos(theta / 2), si = Math.sin(theta / 2);
   return {
-    alpha: [c * s.alpha[0] - si * s.beta[1], c * s.alpha[1] + si * s.beta[0]],
-    beta:  [si * s.alpha[1] + c * s.beta[0], -si * s.alpha[0] + c * s.beta[1]],
+    alpha: [c * s.alpha[0] + si * s.beta[1], c * s.alpha[1] - si * s.beta[0]],
+    beta:  [c * s.beta[0]  + si * s.alpha[1], c * s.beta[1]  - si * s.alpha[0]],
   };
 }
 
-function rz(s: QubitState, phi: number): QubitState {
+// R_z(φ) = exp(-i·φ·Z/2) = diag(e^(-iφ/2), e^(+iφ/2))
+// [Nielsen & Chuang 2010, §4.2, eq. 4.5]
+// α' = (c − i·s)·α  →  α'_re = c·α_re + s·α_im, α'_im = c·α_im − s·α_re
+// β' = (c + i·s)·β  →  β'_re = c·β_re − s·β_im, β'_im = c·β_im + s·β_re
+export function rz(s: QubitState, phi: number): QubitState {
   const cp = Math.cos(phi / 2), sp = Math.sin(phi / 2);
   return {
-    alpha: [cp * s.alpha[0] - sp * s.alpha[1], cp * s.alpha[1] + sp * s.alpha[0]],
-    beta:  [cp * s.beta[0]  + sp * s.beta[1],  cp * s.beta[1]  - sp * s.beta[0]],
+    alpha: [cp * s.alpha[0] + sp * s.alpha[1], cp * s.alpha[1] - sp * s.alpha[0]],
+    beta:  [cp * s.beta[0]  - sp * s.beta[1],  cp * s.beta[1]  + sp * s.beta[0]],
   };
 }
 

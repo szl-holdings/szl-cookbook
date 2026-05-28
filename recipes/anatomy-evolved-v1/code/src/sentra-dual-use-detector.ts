@@ -1,8 +1,12 @@
 /**
  * sentra-dual-use-detector.ts — Watcher arts dual-use filter
  * Organ: sentra (LIVER / TOXIN FILTER)
- * Source: 1 Enoch 6–8 (Charles 1917, pp. 62–65); R02 dual_use_detector.ts
- *         Lean theorem: detector_sound (lutar-lean/Lutar/Metatron/DualUseDetector.lean)
+ *
+ * STATUS: TUTORIAL FIXTURE — runnable copy for the recipe smoke tests.
+ *   The CANONICAL implementation is:
+ *     sentra/web/src/lib/dual-use/dual-use-detector.ts
+ *
+ * Source: 1 Enoch 6–8 (Charles 1917, pp. 62–65)
  * Author: Stephen P. Lutar Jr., SZL Holdings
  */
 

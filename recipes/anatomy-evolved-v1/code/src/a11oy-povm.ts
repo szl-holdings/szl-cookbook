@@ -1,6 +1,11 @@
 /**
  * a11oy-povm.ts — POVM verdict semantics for governance
  * Organ: a11oy (BRAIN / GOVERNANCE CORTEX)
+ *
+ * STATUS: TUTORIAL FIXTURE — runnable copy for the recipe smoke tests.
+ *   The CANONICAL implementation is:
+ *     a11oy/web/packages/a11oy-core/src/quantum/povm.ts
+ *
  * Source: Preskill (2015) Ch. 3; Davies & Lewis (1970); R08 quantum_bohr_povm.ts
  *         Lean theorem: povm_completeness (lutar-lean/Lutar/Quantum/POVM.lean)
  * Author: Stephen P. Lutar Jr., SZL Holdings
