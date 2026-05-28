@@ -13,6 +13,8 @@
 [![Doctrine v6](https://img.shields.io/badge/Doctrine-v6-01696F?style=flat-square)](https://github.com/szl-holdings/platform/blob/main/docs/doctrine/szl-doctrine.md)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0001--0110--4173-A6CE39?style=flat-square&logo=orcid&logoColor=white)](https://orcid.org/0009-0001-0110-4173)
 
+> **Frontier Capability:** First engineering cookbook with Λ-axis governance skills and Doctrine v6 CI gate — `szl-meta-lambda` recipe target and `Lutar.AgentLoop` skill anchor (v18.0 Frontiers 4 & 5 · [Ouroboros Thesis DOI 10.5281/zenodo.20434276](https://doi.org/10.5281/zenodo.20434276)).
+
 `szl-cookbook` is the SZL Holdings engineering cookbook — structured recipes for building governed AI systems using the Anthropic skills pattern, SZL substrate libraries, and Doctrine v6 conventions. It provides 9 composable skill recipes covering the full development lifecycle: pre-flight reasoning, refactoring, review, debugging, dependencies, dead code, documentation, and commit hygiene.
 
 ---
