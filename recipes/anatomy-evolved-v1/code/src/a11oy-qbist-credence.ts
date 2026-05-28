@@ -1,5 +1,13 @@
 /**
  * a11oy-qbist-credence.ts — QBist Bayesian credence per agent
+ *
+ * STATUS: TUTORIAL FIXTURE — runnable copy for the recipe smoke tests.
+ *   The CANONICAL implementation is:
+ *     a11oy/web/packages/a11oy-core/src/quantum/qbist_credence.ts
+ *   The canonical version adds input validation, throws on degenerate
+ *   evidence (Z ≤ 0), and verifies Dutch-book coherence (Σ=1 AND all ≥ 0),
+ *   not just normalization.
+ *
  * Source: Fuchs & Schack (2013), Rev. Mod. Phys. 85, 1693
  *         Fuchs, Mermin, Schack (2014), arXiv:1311.5253
  *         R08 — quantum_bohr_credence.ts
