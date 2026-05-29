@@ -248,7 +248,7 @@ Each subsection below is the prose mirror of one JSON entry in Part 6. The prose
 - **One-line summary:** Accept / Abstain / Reject verdicts emitted by a positive operator-valued measure whose elements sum to identity.
 - **Plain English:** Instead of a binary accept/reject, a11oy uses a three-outcome POVM with elements `E_ACCEPT = diag(α, 0)`, `E_REJECT = diag(0, β)`, and `E_ABSTAIN = I − E_ACCEPT − E_REJECT = diag(1 − α, 1 − β)`. `buildCanonicalPolicyPOVM(α, β)` constructs the triple; `verifyPOVMCompleteness` checks `Σ Eₘ = I`; `applyPOVM(povm, ρ)` returns probabilities. Completeness is what guarantees the three probabilities sum to 1.
 - **Math / formula:** `Σₘ Eₘ = I`, `Eₘ ⪰ 0`, `pₘ = tr(Eₘ ρ)`, `Σₘ pₘ = 1`.
-- **Source paper:** [Davies & Lewis 1970](https://doi.org/10.1007/BF01647093), *Comm. Math. Phys.* 17:239–260; [Preskill 2015](http://theory.caltech.edu/~preskill/ph229/notes/chap3.pdf), Ch. 3.
+- **Source paper:** [Davies & Lewis 1970](https://doi.org/10.1007/BF01647093), *Comm. Math. Phys.* 17:239–260; [Preskill 2015](https://www.preskill.caltech.edu/ph229/notes/chap3.pdf), Ch. 3.
 - **Organ affected:** `a11oy`
 - **v0 → v1 delta:** v0 had a binary verdict layer. v1 ships a POVM with explicit abstain. (See §3.18 for the May 18 2026 completeness bug fix.)
 - **New capability unlocked:** Principled abstention — the agent can say "I don't know" with a probability that sums correctly with accept and reject, no normalization hack required.
