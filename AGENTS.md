@@ -22,11 +22,10 @@ This is a documentation/cookbook repository with two runnable TypeScript sub-pro
 
 - **Main CI validation** (runs on every push/PR): validates README, LICENSE, skills directories, JSON well-formedness. See `.github/workflows/ci.yml`.
 - **Pre-commit hooks**: `pre-commit run --all-files` (trailing-whitespace, end-of-file-fixer, check-yaml, check-json, prettier). Install with `pip install pre-commit`.
-- **TypeScript type-check**: `npx tsc --noEmit` in `recipes/anatomy-evolved-v1/code/`. Note: there is a known pre-existing TS2769 error in `a11oy-ks18-witness.ts` line 163 (the `anatomy-evolved-ci` GitHub Actions workflow is currently red).
+- **TypeScript type-check**: `npx tsc --noEmit` in `recipes/anatomy-evolved-v1/code/`.
 
 ### Known issues
 
-- The `anatomy-evolved-ci` workflow has a pre-existing type error (`Array<0|1>.reduce` return type mismatch). The smoke tests still pass because TypeScript emits JS despite type errors.
 - Pre-commit prettier hook will flag/fix many files in the repo (formatting was not enforced before the hook was added).
 
 ### Running smoke tests (anatomy-evolved-v1)
@@ -34,7 +33,7 @@ This is a documentation/cookbook repository with two runnable TypeScript sub-pro
 ```bash
 cd recipes/anatomy-evolved-v1/code
 npm install
-npx tsc -p tsconfig.test.json   # emits JS to dist-test/ (has type errors but still emits)
+npx tsc -p tsconfig.test.json
 echo '{"type":"commonjs"}' > dist-test/package.json
 node dist-test/tests/smoke.js
 ```
