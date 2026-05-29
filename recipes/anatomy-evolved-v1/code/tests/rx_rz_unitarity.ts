@@ -14,7 +14,7 @@
 // regression in the canonical definition itself.)
 
 import { strict as assert } from "node:assert";
-import { rx, rz, type QubitState } from "../src/amaru-qkan-fwp.ts";
+import { rx, rz, type QubitState } from "../src/amaru-qkan-fwp";
 
 function randomNormalizedState(): QubitState {
   const a_re = Math.random() * 2 - 1;

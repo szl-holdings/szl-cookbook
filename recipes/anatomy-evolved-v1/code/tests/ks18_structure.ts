@@ -20,7 +20,7 @@ import {
   KS18_CONTEXTS,
   verifyKSStructure,
   KochenSpecker18Witness,
-} from "../src/a11oy-ks18-witness.ts";
+} from "../src/a11oy-ks18-witness";
 
 // (i) structure
 {

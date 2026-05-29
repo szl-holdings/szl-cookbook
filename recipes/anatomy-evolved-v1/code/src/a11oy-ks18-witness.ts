@@ -160,7 +160,7 @@ export class KochenSpecker18Witness {
         contextsChecked++;
         // NCHV constraint: in each orthogonal 4-basis, exactly one
         // projector reads "1" (assigned the value true).
-        const ones = (vals as Array<0 | 1>).reduce((a, b) => a + b, 0);
+        const ones = (vals as Array<0 | 1>).reduce<number>((a, b) => a + b, 0);
         if (ones !== 1) inconsistencies++;
       }
     }
