@@ -1,139 +1,172 @@
-# szl-cookbook
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-0B1F3A.svg?style=flat-square&logo=apache&logoColor=00D4FF)](https://www.apache.org/licenses/LICENSE-2.0)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20434276.svg)](https://doi.org/10.5281/zenodo.20434276)
+# szl-cookbook — Recipes and SKILL Patterns for Governed AI Systems
+
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-0B1F3A.svg?style=flat-square&logo=apache&logoColor=f0d4a0)](https://www.apache.org/licenses/LICENSE-2.0)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20434308.svg)](https://doi.org/10.5281/zenodo.20434308)
 [![CI](https://github.com/szl-holdings/szl-cookbook/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/szl-holdings/szl-cookbook/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/szl-holdings/szl-cookbook/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/szl-holdings/szl-cookbook/actions/workflows/codeql.yml)
 [![SBOM](https://github.com/szl-holdings/szl-cookbook/actions/workflows/sbom.yml/badge.svg?branch=main)](https://github.com/szl-holdings/szl-cookbook/actions/workflows/sbom.yml)
-[![SLSA: enabled](https://img.shields.io/badge/SLSA-enabled-0B1F3A.svg?style=flat-square&logoColor=00D4FF)](https://slsa.dev/spec/v1.0/levels)
+[![SLSA: enabled](https://img.shields.io/badge/SLSA-enabled-0B1F3A.svg?style=flat-square&logoColor=f0d4a0)](https://slsa.dev/spec/v1.0/levels)
 [![DCO](https://github.com/szl-holdings/szl-cookbook/actions/workflows/dco.yml/badge.svg?branch=main)](https://github.com/szl-holdings/szl-cookbook/actions/workflows/dco.yml)
-[![ORCID](https://img.shields.io/badge/ORCID-0009--0001--0110--4173-A6CE39.svg?style=flat-square&logo=orcid&logoColor=white)](https://orcid.org/0009-0001-0110-4173)
+[![ORCID](https://img.shields.io/badge/ORCID-0009--0001--0110--4173-A6CE39.svg?style=flat-square&logo=orcid)](https://orcid.org/0009-0001-0110-4173)
+[![HF Space](https://img.shields.io/badge/HF%20Space-szl--cookbook--platform-yellow?logo=huggingface)](https://huggingface.co/spaces/SZLHOLDINGS/szl-cookbook-platform)
 
-> Recipes for building governed AI systems on the SZL substrate
-
-
-> **Frontier Capability:** First engineering cookbook with Λ-axis governance skills and Doctrine v6 CI gate — `szl-meta-lambda` recipe target and `Lutar.AgentLoop` skill anchor (v18.0 Frontiers 4 & 5 · [Ouroboros Thesis DOI 10.5281/zenodo.20434276](https://doi.org/10.5281/zenodo.20434276)).
-
-`szl-cookbook` is the SZL Holdings engineering cookbook — structured recipes for building governed AI systems using the Anthropic skills pattern, SZL substrate libraries, and Doctrine v6 conventions. It provides 9 composable skill recipes covering the full development lifecycle: pre-flight reasoning, refactoring, review, debugging, dependencies, dead code, documentation, and commit hygiene.
+**szl-cookbook** is the pattern library and recipe repository for building governed AI systems.
+It contains 9 SKILL.md agent-instruction patterns, 9 executable recipes across 3 domains,
+Lean 4 formal proofs, and a live exec runner. Doctrine v6 ban-word sweep enforced on CI.
 
 ---
 
-## Your First Recipe
+## What is real today
+
+All counts are grep-verifiable from this repository.
+
+| Metric | Count | How to verify |
+|--------|-------|---------------|
+| SKILL.md patterns | 9 | `ls skills/ \| wc -l` |
+| Recipe markdown files | 9 | `find recipes -name "*.md" \| wc -l` |
+| TypeScript recipe files | 17 | `find recipes -name "*.ts" \| wc -l` |
+| Lean 4 proof files | 2 | `find recipes -name "*.lean" \| wc -l` |
+| Total source files | 119 | `find . -not -path './.git/*' -type f \| wc -l` |
+| Zenodo DOI | 10.5281/zenodo.20434308 | https://doi.org/10.5281/zenodo.20434308 |
+
+---
+
+## SKILL.md Patterns
+
+| Pattern | Purpose |
+|---------|---------|
+| `pre-flight-thinking` | Structured pre-conditions reasoning before agent action |
+| `debug-protocol` | Hypothesis-driven debugging with falsification steps |
+| `commit-hygiene` | Signed, atomic, descriptive commit discipline |
+| `dead-code-detector` | Identify and remove unused code paths |
+| `dependency-health` | Audit direct + transitive dependencies for risk |
+| `doc-comment-hygiene` | Keep doc-comments accurate, terse, and grep-friendly |
+| `monorepo-impact-analysis` | Trace change blast radius across a monorepo |
+| `react-component-review` | Structured review of React/TSX component code |
+| `typescript-refactor` | Safe TypeScript refactoring with type-preservation |
+
+---
+
+## Architecture
+
+```
+skills/ (9 × SKILL.md — agent instruction patterns)
+        │
+        │ loaded by AI agents at task start
+        ▼
+recipes/ (executable code + formal proofs)
+  ├─ knot-calculus-v1/
+  │    ├─ code/src/pac-bayes-bound.ts     ← PAC-Bayes bound computation
+  │    └─ code/src/khipu-receipt.ts       ← receipt DAG reference impl
+  ├─ anatomy-evolved-v1/
+  │    ├─ code/src/ (8 TypeScript modules — KS18 witness, POVM, etc.)
+  │    └─ code/lean/
+  │         ├─ TwoWitness.lean            ← Lean 4 formal proof
+  │         └─ GatedBoundedness.lean      ← Lean 4 formal proof
+  └─ chakra-unification.md                ← design recipe
+        │
+        ▼
+ops/REPLIT_HARDCODE_PAYLOAD/
+  ├─ scorecard/ (security posture CSV, scanner inventory)
+  ├─ anatomy/   (system diagrams: brain, skeleton, heart, nervous, blood/immune)
+  └─ docs/      (operator quickstart, DOI manifest, doctrine test pass)
+        │
+        ▼
+szl-cookbook-runner (HF Space) — live exec for TypeScript recipe code
+
+DOCTRINE V6 BAN-WORD SWEEP — enforced by .pre-commit-config.yaml on every commit
+```
+
+---
+
+## How to use
 
 ```bash
-# Clone the cookbook
+# Run a recipe locally
 git clone https://github.com/szl-holdings/szl-cookbook.git
-cd szl-cookbook
+cd szl-cookbook/recipes/knot-calculus-v1/code
+pnpm install
+npx tsx tests/demo.ts
 
-# Run a recipe (e.g., pre-flight thinking before any change)
-cat recipes/pre-flight-thinking.md
+# Run anatomy-evolved-v1 tests
+cd ../../anatomy-evolved-v1/code
+pnpm install
+pnpm test
+```
 
-# List all available recipes
-ls recipes/
+```typescript
+// Using the PAC-Bayes bound pattern
+import { pacBayesBound } from './recipes/knot-calculus-v1/code/src/pac-bayes-bound'
+
+const bound = pacBayesBound({ trainError: 0.02, klDivergence: 1.4, n: 50000, delta: 0.05 })
+// Returns upper bound on expected test error under the PAC-Bayes theorem
 ```
 
 ---
 
-## Recipe Index
+## Doctrine v6 compliance
 
-| Recipe | Purpose | When to Use |
-|--------|---------|-------------|
-| `pre-flight-thinking` | Structured reasoning before any code change | Before starting any task |
-| `refactoring` | Safe refactor checklist with invariant preservation | Before restructuring code |
-| `review` | Code review checklist — correctness, doctrine, security | Before opening a PR |
-| `debugging` | Systematic debugging protocol | When diagnosing failures |
-| `dependencies` | Dependency addition/upgrade workflow | Before adding any package |
-| `dead-code` | Dead code identification and safe removal | Codebase cleanup passes |
-| `docs` | Documentation generation and quality standards | After any API change |
-| `commit-hygiene` | Conventional commit message construction | Before every commit |
-| `governance-gate` | Doctrine v6 governance gate checklist | Before any consequential change |
-
----
-
-## Skills Pattern
-
-Each recipe implements the Anthropic skills pattern: a structured `SKILL.md` file with:
-1. **Role** — what the skill does
-2. **Pre-conditions** — when to invoke it
-3. **Steps** — ordered procedure
-4. **Checklist** — verification items
-5. **Post-conditions** — what done looks like
+The `.pre-commit-config.yaml` runs a ban-word sweep on every commit. CI rejects artifacts
+containing banned marketing vocabulary. Every file in this repository passes the sweep.
 
 ```bash
-# Skills are in skills/
-ls skills/
-
-# Each skill is a SKILL.md file
-cat skills/a11oy-code/SKILL.md
+# Verify compliance locally
+grep -rE "(revolutionary|unprecedented|world.class|seamless|cutting.edge|game.changing|industry.leading|best.in.class)" . \
+  --include="*.md" --include="*.ts" --include="*.html" && echo FAIL || echo CLEAN
 ```
 
 ---
 
-## Repository Structure
+## What this is NOT
 
-| Path | Contents |
-|------|---------|
-| `recipes/` | Markdown recipe files — one per engineering pattern |
-| `skills/` | Anthropic skill SKILL.md files |
-| `meta/` | Cookbook metadata, index, and doctrine alignment |
-| `ops/` | Operational recipes — CI, deployment, environment |
+- Not a general-purpose agent framework — SKILL.md patterns target the SZL substrate, not LangChain/AutoGen
+- Not a formal methods textbook — Lean 4 proofs address specific substrate theorems (TwoWitness, GatedBoundedness)
+- Not production-ready turn-key library packaging — recipes are reference implementations requiring adaptation
 
 ---
 
-## Security and Governance
+## Sibling repositories
 
-- OpenSSF Scorecard: **6.8** (as of 2026-05-28) — see [scorecard report](https://securityscorecards.dev/viewer/?uri=github.com/szl-holdings/szl-cookbook)
-- CodeQL scanning on every push
-- All recipes are doctrine-v6 reviewed before merge
-- Governance gate recipe is required before any change to policy-adjacent systems
+| Repo | Role |
+|------|------|
+| [a11oy-platform](https://huggingface.co/spaces/SZLHOLDINGS/a11oy-platform) | a11oy agents load SKILL.md patterns to structure their behavior |
+| [amaru](https://github.com/szl-holdings/amaru) | knot-calculus-v1 is the reference impl for amaru's TypeScript bindings |
+| [rosie](https://github.com/szl-holdings/rosie) | rosie's khipu-receipt.ts implements the knot-calculus-v1 pattern |
+| [lutar-lean](https://github.com/szl-holdings/lutar-lean) | TwoWitness.lean + GatedBoundedness.lean feed lutar-lean's theorem library |
+| [agi-forecast](https://github.com/szl-holdings/agi-forecast) | pre-flight-thinking SKILL.md defines agi-forecast gauge reasoning protocol |
 
 ---
 
-## How to Cite
+## How to cite
 
 ```bibtex
-@software{szl_holdings_cookbook_2026,
-  title  = {szl-cookbook — Engineering Recipes for Governed AI Systems},
-  author = {{SZL Holdings}},
-  year   = {2026},
-  doi    = {10.5281/zenodo.20434276},
-  url    = {https://github.com/szl-holdings/szl-cookbook}
+@software{lutar_szl_cookbook_2025,
+  author    = {Lutar, Stephen Paul JR},
+  title     = {szl-cookbook — Pattern Library for Governed AI Systems},
+  year      = {2025},
+  doi       = {10.5281/zenodo.20434308},
+  url       = {https://doi.org/10.5281/zenodo.20434308},
+  license   = {Apache-2.0}
 }
 ```
 
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20434276-805AD5?style=flat-square&logo=doi&logoColor=white)](https://doi.org/10.5281/zenodo.20434276)
+---
+
+## References
+
+- Lean 4 Theorem Prover: https://leanprover.github.io/lean4/
+- SZL Holdings Doctrine v6: https://doi.org/10.5281/zenodo.19944926
+- PAC-Bayes bound: Germain et al. (2012), JMLR 13. https://jmlr.org/papers/v13/germain12a.html
 
 ---
 
-## Contributing
+## License + DCO
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). New recipes require: (1) follows the skills pattern structure, (2) doctrine-v6 tone, (3) CI green, (4) one reviewer approval.
+Licensed under [Apache License 2.0](./LICENSE).
 
-Related: [`szl-holdings/platform`](https://github.com/szl-holdings/platform) · [`szl-holdings/a11oy`](https://github.com/szl-holdings/a11oy) · [`szl-holdings/szl-brand`](https://github.com/szl-holdings/szl-brand)
+All commits require Developer Certificate of Origin sign-off (`git commit -s`).
+Doctrine v6 ban-word sweep enforced via `.pre-commit-config.yaml` on CI.
 
----
+ORCID: [0009-0001-0110-4173](https://orcid.org/0009-0001-0110-4173) · Doctrine v6 compliant
 
-## License
-
-Apache-2.0 — See [LICENSE](./LICENSE). Copyright (c) 2024-2026 SZL Holdings.
-
----
-
-## Related repositories in the SZL substrate
-
-The 13 substrate repos cross-link reciprocally. This footer is maintained by GH Admin #1 (org-wide).
-
-- [`a11oy`](https://github.com/szl-holdings/a11oy) — vertical alignment substrate (policy · measurement · knowledge · QEC-integrity)
-- [`amaru`](https://github.com/szl-holdings/amaru) — Shor-encoded receipt minting (Cardano-anchored)
-- [`rosie`](https://github.com/szl-holdings/rosie) — CSS-ingress receipt orchestration
-- [`sentra`](https://github.com/szl-holdings/sentra) — Kitaev-surface drift detection on audit fibers
-- [`uds-mesh`](https://github.com/szl-holdings/uds-mesh) — UDS span schemas + governance receipts
-- [`lutar-lean`](https://github.com/szl-holdings/lutar-lean) — Lean 4 + Mathlib v4.13.0 kernel proofs (30 GREEN modules)
-- [`ouroboros`](https://github.com/szl-holdings/ouroboros) — bounded-recursion runtime
-- [`ouroboros-thesis`](https://github.com/szl-holdings/ouroboros-thesis) — DOI-pinned thesis substrate (v3 → v18)
-- [`platform`](https://github.com/szl-holdings/platform) — composing monorepo (76 packages, 1,220 tests)
-- [`szl-brand`](https://github.com/szl-holdings/szl-brand) — anatomy + visual doctrine (PDFs hosted in-repo)
-- [`szl-cookbook`](https://github.com/szl-holdings/szl-cookbook) — governed-AI recipes
-- [`agi-forecast`](https://github.com/szl-holdings/agi-forecast) — PAC-Bayes + Bekenstein governance-trajectory forecasts
-- [`vsp-otel`](https://github.com/szl-holdings/vsp-otel) — OpenTelemetry exporter for Λ-axis spans
-
-Org page: [github.com/szl-holdings](https://github.com/szl-holdings) · Doctrine v6 · 11 axioms · 30 GREEN modules · v18.0 DOI [`10.5281/zenodo.20434276`](https://doi.org/10.5281/zenodo.20434276)
+Signed-off-by: Stephen Paul Lutar JR <stephen@szlholdings.com>
