@@ -1,9 +1,29 @@
-
+cff-version: 1.2.0
+message: "If you use these recipes, please cite as follows."
+title: "szl-cookbook — Recipes for building governed AI systems on the SZL substrate"
+version: "0.1.0"
+date-released: "2026-05-29"
+abstract: >-
+  Cookbook of recipes and examples for building governed AI systems on
+  the SZL Holdings Ouroboros substrate, including skill patterns,
+  integration examples, and governance tutorials.
+type: software
+authors:
+  - family-names: Lutar
+    given-names: "Stephen P."
+    name-suffix: "Jr."
+    affiliation: SZL Holdings
+    orcid: "https://orcid.org/0009-0001-0110-4173"
 license: Apache-2.0
+url: "https://github.com/szl-holdings/szl-cookbook"
+repository-code: "https://github.com/szl-holdings/szl-cookbook"
+keywords:
+  - szl-holdings
+  - ai-governance
+  - recipes
+  - tutorials
+  - examples
 identifiers:
-  - description: "Ouroboros Thesis v18.0 — Multi-track Substrate Expansion (Zenodo)"
-    type: doi
-    value: "10.5281/zenodo.20434276"
   - description: "Ouroboros Thesis concept DOI — always-latest"
     type: doi
     value: "10.5281/zenodo.19944926"
