@@ -17,6 +17,17 @@ Lean 4 formal proofs, and a live exec runner. Doctrine v6 ban-word sweep enforce
 
 ---
 
+## On Hugging Face
+
+This repository's live demos, dataset mirror, and org showcase live on the [SZLHOLDINGS Hugging Face org](https://huggingface.co/SZLHOLDINGS):
+
+| Surface | Hugging Face artifact |
+|---------|---------------------|
+| **Live demo** | [szl-cookbook-runner](https://huggingface.co/spaces/SZLHOLDINGS/szl-cookbook-runner) · [szl-cookbook-platform](https://huggingface.co/spaces/SZLHOLDINGS/szl-cookbook-platform) |
+| **Deep-dive showcase** | [szl-cookbook-deep-dive](https://huggingface.co/spaces/SZLHOLDINGS/szl-cookbook-deep-dive) |
+| **Source mirror** | [szl-cookbook-source](https://huggingface.co/datasets/SZLHOLDINGS/szl-cookbook-source) |
+| **Org showcase** | [SZLHOLDINGS on Hugging Face](https://huggingface.co/SZLHOLDINGS) — 22 datasets · 19+ Spaces · 2 models |
+
 ## What is real today
 
 All counts are grep-verifiable from this repository.
