@@ -11,6 +11,9 @@
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/szl-holdings/szl-cookbook/badge)](https://securityscorecards.dev/viewer/?uri=github.com/szl-holdings/szl-cookbook)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0001--0110--4173-A6CE39.svg?style=flat-square&logo=orcid&logoColor=white)](https://orcid.org/0009-0001-0110-4173)
 
+
+> **NOTE:** SLSA Level 1 (source + build provenance documented). L2/L3 require Sigstore + isolated builders (roadmap).
+
 > Pattern library and executable recipe repository for building governed AI systems on the SZL substrate — 9 SKILL.md patterns, 9 recipes, Lean 4 cross-references, and a live exec runner.  
 > Doctrine v6 · DOI [10.5281/zenodo.20434308](https://doi.org/10.5281/zenodo.20434308)
 
