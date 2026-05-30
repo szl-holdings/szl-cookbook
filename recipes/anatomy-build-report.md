@@ -1,3 +1,4 @@
+<!-- SCAFFOLD: build report only — no runnable code; not counted as an executable recipe -->
 # SZL Agent Body Diagram — v3 Report
 **Date:** 2026-05-14  
 **Author:** Lutar, Stephen P.  
