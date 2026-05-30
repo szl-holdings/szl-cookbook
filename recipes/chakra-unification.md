@@ -1,3 +1,4 @@
+<!-- SCAFFOLD: design document only — no runnable code; not counted as an executable recipe -->
 # 06 — UNIFICATION WITH EXISTING CHAKRAS
 ## Which Chakras Need Codex Sibling Rewrites
 

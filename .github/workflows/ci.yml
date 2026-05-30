@@ -37,6 +37,11 @@ jobs:
           test -d skills
           count=$(find skills -type d -mindepth 1 -maxdepth 1 | wc -l)
           echo "Found $count skill directories."
+          if [ "$count" -ne 9 ]; then
+            echo "::error::Expected exactly 9 skill directories (README badge claims 9), found $count"
+            exit 1
+          fi
+          echo "Skill count assertion passed: 9/9"
 
       - name: Each skill has a SKILL.md or README.md
         run: |
