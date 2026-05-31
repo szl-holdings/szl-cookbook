@@ -32,9 +32,9 @@
 > **NOTE:** SLSA Level 1 (source + build provenance documented). L2/L3 require Sigstore + isolated builders (roadmap).
 
 > Pattern library and executable recipe repository for building governed AI systems on the SZL substrate — 9 SKILL.md patterns, 9 recipes, Lean 4 cross-references, and a live exec runner.  
-> Doctrine v6 · DOI [10.5281/zenodo.20434308](https://doi.org/10.5281/zenodo.20434308)
+> Doctrine v7 · DOI [10.5281/zenodo.20434308](https://doi.org/10.5281/zenodo.20434308)
 
-**szl-cookbook** provides reusable SKILL.md agent-instruction patterns and executable recipes for engineering teams building governed AI applications. A Doctrine v6 ban-word sweep runs on every CI push.
+**szl-cookbook** provides reusable SKILL.md agent-instruction patterns and executable recipes for engineering teams building governed AI applications. A Doctrine v7 ban-word sweep runs on every CI push.
 
 ---
 
@@ -58,11 +58,11 @@
 | Executable recipes | 9 | `recipes/` |
 | Recipe domains | 3 | governance, audit, runtime |
 | Lean 4 proof cross-references | via lutar-lean | [DOI 10.5281/zenodo.20434308](https://doi.org/10.5281/zenodo.20434308) |
-| Doctrine v6 ban-word CI check | active | `.github/workflows/doctrine.yml` |
+| Doctrine v7 ban-word CI check | active | `.github/workflows/doctrine.yml` |
 
 ---
 
-## Doctrine v6 ban-word list
+## Doctrine v7 ban-word list
 
 CI fails on: `revolutionary`, `unprecedented`, `world-class`, `seamless`, `industry-leading`, `cutting-edge`, `game-changing`, `breakthrough`, `only` (superlative), `first` (superlative).
 
@@ -85,7 +85,7 @@ CI fails on: `revolutionary`, `unprecedented`, `world-class`, `seamless`, `indus
 ```bash
 pnpm install
 pnpm exec:recipe governance/policy-gate-scaffold
-pnpm doctrine:check   # Doctrine v6 ban-word sweep
+pnpm doctrine:check   # Doctrine v7 ban-word sweep
 ```
 
 ---
