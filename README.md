@@ -127,3 +127,9 @@ Preferred citation: [The Ouroboros Substrate (v18.0)](https://doi.org/10.5281/ze
 ## License · Trust · Security
 
 [Apache 2.0](./LICENSE). SLSA Level 1 (source + build provenance documented; L2/L3 require Sigstore + isolated builders — roadmap). Security disclosures: see [SECURITY.md](./SECURITY.md).
+
+## SZL Holdings
+
+![SZL Holdings](./branding/szl-avatar-animated.gif)
+
+*Amaru — the Inca avatar of SZL Holdings. Animated mark (400×400, 16fps loop). Signed Yachay.*
