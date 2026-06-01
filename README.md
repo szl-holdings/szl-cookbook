@@ -2,9 +2,13 @@
 
 # szl-cookbook
 
+<!-- series-a-badges (Doctrine v11) -->
+[![Dependabot](https://img.shields.io/badge/Dependabot-enabled-025E8C?style=flat-square&logo=dependabot&logoColor=white)](https://github.com/szl-holdings/szl-cookbook/security/dependabot)
+
+
 **Worked recipes + claude-code skills harvested with full provenance.**
 
-[![Doctrine v7](https://img.shields.io/badge/Doctrine-v7-7c5cff?style=flat-square)](https://github.com/szl-holdings/.github/blob/main/DOCTRINE_V7.md) [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-0B1F3A.svg?style=flat-square&logo=apache&logoColor=00D4FF)](https://www.apache.org/licenses/LICENSE-2.0) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20434308.svg)](https://doi.org/10.5281/zenodo.20434308)
+[![Doctrine v11](https://img.shields.io/badge/Doctrine-v11-3b82f6?style=flat-square)](https://github.com/szl-holdings/.github/blob/main/DOCTRINE_V11.md) [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-0B1F3A.svg?style=flat-square&logo=apache&logoColor=00D4FF)](https://www.apache.org/licenses/LICENSE-2.0) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20434308.svg)](https://doi.org/10.5281/zenodo.20434308)
 
 [![CI](https://github.com/szl-holdings/szl-cookbook/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/szl-holdings/szl-cookbook/actions/workflows/ci.yml) [![Tests](https://github.com/szl-holdings/szl-cookbook/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/szl-holdings/szl-cookbook/actions/workflows/tests.yml) [![CodeQL](https://github.com/szl-holdings/szl-cookbook/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/szl-holdings/szl-cookbook/actions/workflows/codeql.yml) [![SBOM](https://github.com/szl-holdings/szl-cookbook/actions/workflows/sbom.yml/badge.svg?branch=main)](https://github.com/szl-holdings/szl-cookbook/actions/workflows/sbom.yml) [![DCO](https://github.com/szl-holdings/szl-cookbook/actions/workflows/dco.yml/badge.svg?branch=main)](https://github.com/szl-holdings/szl-cookbook/actions/workflows/dco.yml) [![SLSA L1](https://img.shields.io/badge/SLSA-L1_(SBOM_%2B_DCO)-0B1F3A.svg?style=flat-square)](https://slsa.dev/spec/v1.0/levels) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/szl-holdings/szl-cookbook/badge)](https://securityscorecards.dev/viewer/?uri=github.com/szl-holdings/szl-cookbook) [![GHAS](https://img.shields.io/badge/GHAS-Code_Security-2DA44E.svg?style=flat-square&logo=github)](https://github.com/szl-holdings/szl-cookbook/security/code-scanning) [![ORCID](https://img.shields.io/badge/ORCID-0009--0001--0110--4173-A6CE39.svg?style=flat-square&logo=orcid&logoColor=white)](https://orcid.org/0009-0001-0110-4173)
 
@@ -26,14 +30,14 @@
 
 ## Why it matters
 
-Governed AI requires more than a policy engine — it requires executable examples that engineers can copy, adapt, and verify. szl-cookbook closes the gap between the Ouroboros Thesis formal guarantees and working code: every recipe is `tsc --noEmit` clean, references specific Lean obligations by theorem name, and carries a sealed date. The Doctrine v7 ban-word CI check runs on every push.
+Governed AI requires more than a policy engine — it requires executable examples that engineers can copy, adapt, and verify. szl-cookbook closes the gap between the Ouroboros Thesis formal guarantees and working code: every recipe is `tsc --noEmit` clean, references specific Lean obligations by theorem name, and carries a sealed date. The Doctrine v11 ban-word CI check runs on every push.
 
 ## Quickstart
 
 ```bash
 pnpm install
 pnpm exec:recipe governance/policy-gate-scaffold
-pnpm doctrine:check   # Doctrine v7 ban-word sweep
+pnpm doctrine:check   # Doctrine v11 ban-word sweep
 ```
 
 Run the knot-calculus demo:
@@ -67,7 +71,7 @@ npx tsx tests/demo.ts
 | `skills/typescript-refactor/SKILL.md` | Claude-code skill: TypeScript refactor |
 | `meta/content-gap-matrix-2026-05-17.md` | Content gap matrix — recipe coverage vs. thesis obligations |
 
-## Doctrine v7
+## Doctrine v11
 
 A ban-word CI check runs on every push via `.github/workflows/doctrine.yml`. The full list of prohibited superlatives is defined in the workflow file. Any match causes CI failure.
 
