@@ -20,6 +20,18 @@
 
 ---
 
+<div align="center">
+
+<!-- genius-hero (Doctrine v11) -->
+<a href="https://szl-holdings.github.io/szl-cookbook/"><img src="assets/genius/cookbook_card.svg" alt="szl-cookbook — worked recipes with full provenance" width="860"></a>
+
+<sub><b><a href="https://szl-holdings.github.io/szl-cookbook/">▶ Browse the live recipe carousel</a></b> — every recipe carries a HARVEST_LOG provenance receipt.</sub>
+
+<img src="assets/genius/cookbook_cast.svg" alt="recipe run — khipu root → knot tag → PAC-Bayes bound" width="720">
+
+</div>
+
+
 > A measurable governance operator on the receipt-bus σ-algebra of agentic AI — demonstrated through worked recipes with PAC-Bayes bounds, carlota-jo doctrine guards, and claude-code skills with full HARVEST_LOG provenance.
 
 ---
