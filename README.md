@@ -2,8 +2,6 @@
 
 # szl-cookbook
 
-<!-- CII-BEST-PRACTICES-BADGE: PENDING — replace 'PENDING' with the project id once founder registers this repo at https://bestpractices.coreinfrastructure.org/ -->
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/PENDING/badge)](https://bestpractices.coreinfrastructure.org/)
 
 <!-- series-a-badges (Doctrine v11) -->
 [![Dependabot](https://img.shields.io/badge/Dependabot-enabled-025E8C?style=flat-square&logo=dependabot&logoColor=white)](https://github.com/szl-holdings/szl-cookbook/security/dependabot)
@@ -102,8 +100,6 @@ A ban-word CI check runs on every push via `.github/workflows/doctrine.yml`. The
 | [a11oy](https://github.com/szl-holdings/a11oy) | Flagship governance app |
 | [amaru](https://github.com/szl-holdings/amaru) | Cardano anchoring layer |
 | [sentra](https://github.com/szl-holdings/sentra) | Policy enforcement engine |
-| [terra](https://github.com/szl-holdings/terra) | Infrastructure substrate |
-| [vessels](https://github.com/szl-holdings/vessels) | Data pipeline layer |
 | Hatun Doctrine Specification | [szl-holdings/platform/docs/a11oy/spec/hatun-doctrine-spec/](https://github.com/szl-holdings/platform/tree/main/docs/a11oy/spec/hatun-doctrine-spec/) |
 
 ## On Hugging Face
