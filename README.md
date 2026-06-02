@@ -110,8 +110,6 @@ A ban-word CI check runs on every push via `.github/workflows/doctrine.yml`. The
 |---------|----------|
 | Live demo | [szl-cookbook-runner](https://huggingface.co/spaces/SZLHOLDINGS/szl-cookbook-runner) · [szl-cookbook-platform](https://huggingface.co/spaces/SZLHOLDINGS/szl-cookbook-platform) |
 | Deep-dive | [szl-cookbook-deep-dive](https://huggingface.co/spaces/SZLHOLDINGS/szl-cookbook-deep-dive) |
-| Source mirror | [szl-cookbook-source](https://huggingface.co/datasets/SZLHOLDINGS/szl-cookbook-source) |
-
 ## Citation
 
 See [CITATION.cff](./CITATION.cff) for machine-readable metadata. Quick reference:
