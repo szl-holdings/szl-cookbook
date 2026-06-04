@@ -38,7 +38,7 @@ jobs:
             src/ lean/ tests/ 2>/dev/null \
             | grep -v 'BANNED_TOKENS' \
             | grep -v 'doctrine-guard' \
-            | wc -l)
+            | wc -l || true)
           if [ "$HITS" -gt 0 ]; then
             echo "DOCTRINE VIOLATION: $HITS banned-token hits outside guard arrays"
             exit 1
