@@ -132,19 +132,19 @@ All comments authored as Stephen P. Lutar Jr. / `stephen@szlholdings.com`.
 
 ### Sweep 1 (initial)
 - [lutar-lean#18](https://github.com/szl-holdings/lutar-lean/pull/18#issuecomment-4467391875) — 7-sorry close framing is false
-- [ouroboros-thesis#44](https://github.com/szl-holdings/ouroboros-thesis/pull/44#issuecomment-4467393182) — abstract overclaims (D1)
+- ouroboros-thesis#44 — abstract overclaims (D1)
 - [vsp-otel#4](https://github.com/szl-holdings/vsp-otel/pull/4#issuecomment-4467395214) — empty repo (D5)
-- [agi-forecast#4](https://github.com/szl-holdings/agi-forecast/pull/4#issuecomment-4467395270) — empty repo (D5)
+- agi-forecast#4 — empty repo (D5)
 - [ouroboros#31 + #32](https://github.com/szl-holdings/ouroboros/pull/31#issuecomment-4467395315) — runLoop untested, Λ synthetic, GAP-AXIS (D6, D7, D9)
-- [ouroboros-thesis#46](https://github.com/szl-holdings/ouroboros-thesis/pull/46#issuecomment-4467395463) — anatomy is doc-only footnote
+- ouroboros-thesis#46 — anatomy is doc-only footnote
 
 ### Sweep 2 (final close-out)
-- **[agi-forecast#9](https://github.com/szl-holdings/agi-forecast/pull/9)** — D15 README snapshot-honesty banner (draft PR)
+- **agi-forecast#9** — D15 README snapshot-honesty banner (draft PR)
 - **[ouroboros#33](https://github.com/szl-holdings/ouroboros/pull/33)** — D16 `SZL Consulting LTD` → `SZL Holdings` in runtime-contract.v3.json (draft PR)
-- **[ouroboros-thesis#47](https://github.com/szl-holdings/ouroboros-thesis/pull/47)** — D16 same fix across 3 runtime-contract files (draft PR)
+- **ouroboros-thesis#47** — D16 same fix across 3 runtime-contract files (draft PR)
 - [lutar-lean#18 consolidated](https://github.com/szl-holdings/lutar-lean/pull/18#issuecomment-4467522329) — D2/D3/D11/D12 specific Lean defects
-- [ouroboros#31 GAP-AXIS](https://github.com/szl-holdings/ouroboros/pull/31#issuecomment-4467525726) + [ouroboros-thesis#44 GAP-AXIS](https://github.com/szl-holdings/ouroboros-thesis/pull/44#issuecomment-4467525771) — D9 per-axis diff: **5 of 9 names differ**, one with reversed polarity
-- [sentra#22](https://github.com/szl-holdings/sentra/pull/22#issuecomment-4467521037) + [sentra#20](https://github.com/szl-holdings/sentra/pull/20#issuecomment-4467521090) — D14 doc-only framing
+- [ouroboros#31 GAP-AXIS](https://github.com/szl-holdings/ouroboros/pull/31#issuecomment-4467525726) + ouroboros-thesis#44 GAP-AXIS — D9 per-axis diff: **5 of 9 names differ**, one with reversed polarity
+- sentra#22 + sentra#20 — D14 doc-only framing
 - [.github#37](https://github.com/szl-holdings/.github/pull/37#issuecomment-4467527160) — **D17 CORRECTION**: downgraded to non-defect (false-positive) after re-verification
 
 ---
