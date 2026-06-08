@@ -19,7 +19,7 @@ Worked, runnable recipes — each verified end-to-end against the live mesh, eac
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue?style=flat-square)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20434308.svg)](https://doi.org/10.5281/zenodo.20434308)
 
-[Hugging Face](https://huggingface.co/SZLHOLDINGS) · [GitHub Org](https://github.com/szl-holdings) · [Docs Site](https://docs.szlholdings.com)
+[Hugging Face](https://huggingface.co/SZLHOLDINGS) · [GitHub Org](https://github.com/szl-holdings) · [Docs Site](https://szl-holdings.github.io/docs-site)
 
 `receipts.in ≡ receipts.out`
 
@@ -118,7 +118,7 @@ The cookbook recipes are the customer first-touch path into the SZL platform. Th
 from:
 
 - The [SZL Holdings org profile](https://github.com/szl-holdings) (landing page).
-- The [SZL docs site](https://docs.szlholdings.com) cookbook section.
+- The [SZL docs site](https://szl-holdings.github.io/docs-site) cookbook section.
 - Each product README's "Try the cookbook recipe" callout.
 - Each [Hugging Face Space](https://huggingface.co/SZLHOLDINGS) card's "Cookbook recipes for this Space" section.
 
