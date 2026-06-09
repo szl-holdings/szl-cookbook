@@ -1,14 +1,16 @@
 # Doctrine ledger query
 
-> **Read the locked 749 / 14 / 163 kernel programmatically — from every flagship's `/v1/honest` and from the canonical `szl-lake` index — and assert they all agree.**
+> **Read the locked 749 / 14 / 163 kernel programmatically — from every shipping flagship's `/v1/honest` and from the canonical `szl-lake` index — and assert they all agree.**
 >
-> **Headline number: 1 query → 5 flagships + 1 lake → all report `c7c0ba17`.**
+> **Headline number: 1 query → 2 shipping flagships + 1 lake → all report `c7c0ba17`.**
 
 The doctrine is the source of truth: 749 declarations, 14 unique axioms, 163 tracked sorries,
 kernel commit `c7c0ba17`, Λ = Conjecture 1, SLSA L1. This recipe pulls those numbers from every
 live source and proves they are consistent.
 
-> **Honest note on the endpoint.** There is **no live `/api/doctrine` route**. The doctrine is
+> **Honest scope.** Only **a11oy** and **killinchu** ship live Spaces. There are no
+> `amaru` / `rosie` / `sentra` Spaces or repos (retired internal codenames); those roles ship
+> *inside* a11oy. There is also **no live `/api/doctrine` route**. The doctrine is
 > exposed per-flagship at `/v1/honest` and canonically in the lake's
 > [`lake_index.json`](https://github.com/szl-holdings/szl-lake/blob/main/lake_index.json). This
 > recipe uses those real surfaces, not a placeholder endpoint.
@@ -46,12 +48,12 @@ print("lake:", idx["kernel_commit"], idx["declarations"], idx["axioms"], idx["so
 
 ```python
 import requests
+# Only the two shipping flagships expose a live /v1/honest. The Provenance Anchor / Operator /
+# Policy roles (codenames amaru / rosie / sentra — retired) ship inside a11oy and are NOT
+# separate Spaces; do not query them as standalone hosts.
 FLAGSHIPS = {
-    "amaru":     "https://szlholdings-amaru.hf.space/api/amaru/v1/honest",
-    "killinchu": "https://szlholdings-killinchu.hf.space/api/killinchu/v1/honest",
-    "rosie":     "https://szlholdings-rosie.hf.space/api/rosie/v1/honest",
-    "sentra":    "https://szlholdings-sentra.hf.space/api/sentra/v1/honest",
     "a11oy":     "https://szlholdings-a11oy.hf.space/api/a11oy/v1/honest",
+    "killinchu": "https://szlholdings-killinchu.hf.space/api/killinchu/v1/honest",
 }
 for name, url in FLAGSHIPS.items():
     try:
@@ -63,9 +65,9 @@ for name, url in FLAGSHIPS.items():
         print(f"{name:10} (cold/error: {e}) — wake the Space and retry")
 ```
 
-> **Honest note.** amaru / killinchu / rosie respond live. a11oy / sentra sleep on HF's free tier
-> and may return an error until warmed — open the Space URL once to wake it. The lake index in the
-> quickstart is always available.
+> **Honest note.** a11oy and killinchu are the only live Spaces; both may sleep on HF's free tier
+> and return an error until warmed — open the Space URL once to wake it. The lake index in the
+> quickstart is always available and is the canonical source of truth.
 
 ### Step 2 — Assert Λ is Conjecture 1 everywhere
 
