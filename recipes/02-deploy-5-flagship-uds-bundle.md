@@ -1,12 +1,17 @@
-# Deploy the 5-flagship UDS bundle
+# Deploy the SZL flagship UDS bundle
 
-> **Pull the SZL Zarf bundle, deploy all five organs onto a UDS Core cluster, and confirm every organ reports the same locked doctrine on `/v1/honest`.**
+> **Pull the SZL Zarf bundle, deploy the shipping flagships onto a UDS Core cluster, and confirm every organ reports the same locked doctrine on `/v1/honest`.**
 >
-> **Headline number: 5 organs, 1 bundle, 1 doctrine — 749/14/163 on every `/healthz`.**
+> **Headline number: 1 bundle, 1 doctrine — 749/14/163 on every `/healthz`.**
 
-The five flagships ship as airgap-deployable, cosign-signed
-[Unified Defense Stack (UDS)](https://github.com/szl-holdings/uds-bundles) Zarf bundles built on
-UDS Core v1.5.0. This recipe deploys them and runs the mesh health check.
+The two shipping flagships — **a11oy** and **killinchu** — ship as airgap-deployable,
+cosign-signed [Unified Defense Stack (UDS)](https://github.com/szl-holdings/uds-bundles) Zarf
+bundles built on UDS Core v1.5.0. This recipe deploys them and runs the mesh health check.
+
+> **Honest scope.** Only a11oy and killinchu are published images in the bundle today. The
+> Provenance Anchor, Operator, and Policy roles (internal codenames *amaru*, *rosie*, *sentra* —
+> retired) are roadmap; their live equivalents ship **inside a11oy**, not as separate images.
+> Do not expect `cosign verify` / `kubectl exec` to succeed for those role names.
 
 > **Trademark note.** "UDS" references Defense Unicorns' Unified Defense Stack
 > (USPTO Serial 99831122). SZL Holdings is not affiliated with Defense Unicorns; integration is
@@ -38,7 +43,7 @@ uds pull oci://ghcr.io/szl-holdings/szl-uds-bundle:uds-v0.2.0
 uds deploy szl-uds-bundle-*.tar.zst --confirm
 
 # One-shot mesh health: every organ must report the same locked doctrine.
-for o in a11oy sentra amaru killinchu rosie; do
+for o in a11oy killinchu; do
   printf "%-10s " "$o"
   kubectl -n szl exec deploy/$o -- curl -s localhost:8080/api/$o/v1/honest \
     | jq -r '"\(.doctrine // "v11")  decl=\(.declarations)  ax=\(.axioms_unique)  sorries=\(.sorries_total)"'
@@ -61,7 +66,7 @@ zarf package inspect oci://ghcr.io/szl-holdings/szl-uds-bundle:uds-v0.2.0
 ### Step 2 — Verify each organ image is signed (keyless cosign)
 
 ```bash
-for o in a11oy sentra amaru killinchu rosie; do
+for o in a11oy killinchu; do
   cosign verify ghcr.io/szl-holdings/$o:uds-v0.2.0 \
     --certificate-identity-regexp="^https://github.com/szl-holdings/" \
     --certificate-oidc-issuer="https://token.actions.githubusercontent.com" \
@@ -96,9 +101,9 @@ The acceptance criterion is uniformity: **all five** report `v11 / 749 / 14 / 16
 ### Step 5 — Smoke the live mesh path
 
 ```bash
-# amaru emits a real DSSE tick receipt:
-kubectl -n szl exec deploy/amaru -- curl -s -X POST localhost:8080/api/amaru/scheduler/tick -d '{}' \
-  | jq '{tick: .tick_id, hash: .tick_receipt.hash, sig: .dsse.signatures[0].keyid}'
+# a11oy emits a real DSSE receipt on a gated action:
+kubectl -n szl exec deploy/a11oy -- curl -s -X POST localhost:8080/khipu/sign -d '{"payload":{"hello":"szl"}}' \
+  | jq '{hash: .receipt.hash, sig: .signatures[0].keyid}'
 ```
 
 > **Honest note.** In-cluster receipt signatures are `PLACEHOLDER` (Sigstore CI pending). For a
@@ -108,7 +113,7 @@ kubectl -n szl exec deploy/amaru -- curl -s -X POST localhost:8080/api/amaru/sch
 
 ## See also
 
-- **[13 — Build a UDS bundle from scratch](13-build-uds-bundle-from-scratch.md)** — start with 1 organ, grow to 5.
+- **[13 — Build a UDS bundle from scratch](13-build-uds-bundle-from-scratch.md)** — start with 1 organ, grow the bundle.
 - **[15 — Air-gapped install](15-air-gapped-install.md)** — fully offline deploy from a USB tarball.
 - **[06 — Verify cosign + Rekor](06-cosign-rekor-slsa-l1.md)**
 - Repo: [uds-bundles](https://github.com/szl-holdings/uds-bundles) · [szl-uds-deployment](https://github.com/szl-holdings/szl-uds-deployment)
@@ -117,7 +122,7 @@ kubectl -n szl exec deploy/amaru -- curl -s -X POST localhost:8080/api/amaru/sch
 
 ```bibtex
 @misc{szl_cookbook_uds_bundle_2026,
-  title        = {Deploy the 5-flagship UDS bundle (SZL Cookbook recipe 02)},
+  title        = {Deploy the SZL flagship UDS bundle (SZL Cookbook recipe 02)},
   author       = {{SZL Holdings}},
   year         = {2026},
   howpublished = {\url{https://github.com/szl-holdings/szl-cookbook/blob/main/recipes/02-deploy-5-flagship-uds-bundle.md}},
