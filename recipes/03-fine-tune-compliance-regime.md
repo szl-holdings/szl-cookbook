@@ -1,13 +1,18 @@
 # Fine-tune a customer compliance regime
 
-> **Take the doctrine pretrain set, project new receipts through `sentra`'s σ-algebra of governance signals, and emit a customer-specific Λ-extension that runs as an overlay — without touching the locked kernel.**
+> **Take the doctrine pretrain set, project new receipts through the Policy role's σ-algebra of governance signals (internal codename *sentra* — retired; live equivalent ships inside a11oy), and emit a customer-specific Λ-extension that runs as an overlay — without touching the locked kernel.**
 >
 > **Headline number: 1 customer regime, 0 changes to 749/14/163.**
 
 A "compliance regime" in SZL is **not** a model fine-tune that mutates the kernel. The kernel
 (`c7c0ba17`, 749/14/163) is LOCKED. Instead you define an **overlay**: a measurable function on
 the receipt-bus σ-algebra that *tightens* gates for your context (e.g., EU AI Act high-risk,
-NIST AI RMF, CMMC). This recipe builds and tests one.
+NIST AI RMF; CMMC alignment is roadmap). This recipe builds and tests one.
+
+> **Honest scope.** There is no standalone `sentra` Space or repo (retired codename). The live
+> policy/drift inspector is exposed inside `a11oy` via `/api/a11oy/v1/mcp/call` (tool `a11oy_gate`).
+> Λ axis scores come from the live `killinchu` gate. An overlay is *your* engineering policy on
+> top of these signals — never a change to the locked kernel.
 
 > **Honest framing.** Λ is **Conjecture 1**, not a theorem. The overlay you build is an
 > engineering policy on top of the gate; it inherits Λ's *measured* axis scores, not a proof of
@@ -29,7 +34,8 @@ No kernel write access required (and none is possible — that is the design).
 ```python
 import requests
 
-SENTRA = "https://szlholdings-sentra.hf.space/api/sentra"
+# Policy role (codename sentra retired) ships inside a11oy.
+A11OY = "https://szlholdings-a11oy.hf.space/api/a11oy"
 
 # A customer regime = a set of axis floors + required gates, applied as an overlay.
 regime = {
@@ -39,13 +45,14 @@ regime = {
     "inherit": "doctrine-v11",         # never rewrites the kernel
 }
 
-# Project a candidate action through sentra; overlay decides PASS/FAIL on top of the base verdict.
+# Project a candidate action through the a11oy gate; overlay decides PASS/FAIL on top of the base verdict.
 action = {"kind": "model_output", "text": "…", "context": {"sector": "credit_scoring"}}
-base = requests.post(f"{SENTRA}/v1/inspect", json={"action": action}, timeout=60).json()
+base = requests.post(f"{A11OY}/v1/mcp/call",
+                     json={"tool": "a11oy_gate", "args": {"action": action}}, timeout=60).json()
 print("base verdict:", base.get("verdict"))
 ```
 
-The overlay never asks sentra to change a gate; it reads sentra's per-axis signals and applies
+The overlay never asks the gate to change; it reads the per-axis signals and applies
 *stricter* floors locally.
 
 ---
@@ -99,8 +106,8 @@ print(lambda_extension(prior, regime))
 ### Step 4 — Bind the regime to a receipt
 
 Wrap the overlay decision as a Khipu receipt so it is itself auditable (verify it with
-**[recipe 01](01-verify-a-receipt-end-to-end.md)**). Submit candidate receipts back through
-sentra's `/v1/verdict` for the chained, signed base verdict; store the overlay decision alongside.
+**[recipe 01](01-verify-a-receipt-end-to-end.md)**). Submit candidate receipts back through the
+a11oy gate (`/v1/mcp/call`) for the chained, signed base verdict; store the overlay decision alongside.
 
 ### Step 5 — Validate against your corpus
 
@@ -115,7 +122,7 @@ to put a tail bound on the regime's empirical risk.
 - **[09 — PAC-Bayes confidence margin](09-pac-bayes-confidence-margin.md)** — bound the regime's risk.
 - **[12 — Doctrine ledger query](12-doctrine-ledger-query.md)** — read the locked priors.
 - **[01 — Verify a receipt end-to-end](01-verify-a-receipt-end-to-end.md)**
-- Live: [sentra](https://szlholdings-sentra.hf.space) · [killinchu Λ axes](https://szlholdings-killinchu.hf.space/api/killinchu/v1/lambda)
+- Live: [a11oy gate](https://szlholdings-a11oy.hf.space) (hosts the Policy role; codename *sentra* retired) · [killinchu Λ axes](https://szlholdings-killinchu.hf.space/api/killinchu/v1/lambda)
 
 ## Cite this recipe
 
