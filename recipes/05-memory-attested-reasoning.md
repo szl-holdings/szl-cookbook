@@ -1,19 +1,27 @@
 # Memory-attested reasoning
 
-> **Run a scheduler tick through `amaru`'s 7-chakra cortex and read back the DSSE-wrapped receipt chain — every inference carries its provenance, every memory carries its receipt.**
+> **Drive a11oy's memory cortex (internal codename *amaru* — retired) and read back the
+> DSSE-wrapped receipt chain — every inference carries its provenance, every memory carries its receipt.**
 >
-> **Headline number: 7 chakras → 7 receipt entries → 1 hash-chained DSSE tick.**
+> **Headline number: 1 recall → N cited memories → 1 hash-chained DSSE receipt.**
 
-`amaru` is the memory cortex. Its contract is unusual: it refuses to produce a reasoning step
-without also producing a receipt for that step. This recipe drives the live cortex and shows the
-cited receipt chain in the response.
+The **Provenance Anchor** role — the memory cortex historically prototyped under the internal
+codename *amaru* — is shipped today **inside a11oy**, not as a separate Space. Its contract is
+unusual: it refuses to surface a recalled memory without also surfacing the receipt for the write
+that created it. This recipe drives the live a11oy memory path and shows the cited receipt chain.
+
+> **Honest scope.** There is no standalone `amaru` Space or repo (retired codename). The live
+> memory cortex is `a11oy`'s `/api/a11oy/v2/unay/recall` and `/api/a11oy/v1/mcp/call` endpoints.
+> Cardano anchoring is demo-seeded, not on-chain mainnet. Live tick signatures are PLACEHOLDER;
+> the lake's `khipu/*.ndjson` carries a **real** ECDSA-P256 signature you can verify
+> (**[recipe 01](01-verify-a-receipt-end-to-end.md)**).
 
 ---
 
 ## Prerequisites
 
 ```bash
-# curl + jq. The amaru Space is live and needs no credentials.
+# curl + jq. The a11oy Space is live and the doctrine/recall probes need no credentials.
 ```
 
 ---
@@ -21,21 +29,18 @@ cited receipt chain in the response.
 ## Quickstart (live, verified)
 
 ```bash
-AMARU=https://szlholdings-amaru.hf.space/api/amaru
+A11OY=https://szlholdings-a11oy.hf.space
 
-# Run a full root→crown scheduler tick. Returns a DSSE-wrapped tick receipt.
-curl -s -X POST $AMARU/scheduler/tick -d '{}' | jq '{
-  tick: .tick_id,
-  hash: .tick_receipt.hash,
-  prev: .tick_receipt.prevHash,
-  payloadType: .dsse.payloadType,
-  keyid: .dsse.signatures[0].keyid,
-  chakras: [.steps[].chakra]
+# Recall memory with cited receipts. Returns recalled chunks each carrying the receipt_seq
+# of the write that created them.
+curl -s -X POST $A11OY/api/a11oy/v2/unay/recall -d '{"query":"doctrine","k":5}' | jq '{
+  total: .total,
+  items: [.items[] | {text: .text, receipt_seq: .receipt_seq}]
 }'
-# => chakras: ["root","sacral","solar","heart","throat","third_eye","crown"]
 ```
 
-Each tick advances the hash chain: this tick's `prevHash` equals the previous tick's `hash`.
+Each recalled memory cites the `receipt_seq` of its write — that sequence number is the
+citation index into the hash-chained receipt log.
 
 ---
 
@@ -44,62 +49,63 @@ Each tick advances the hash chain: this tick's `prevHash` equals the previous ti
 ### Step 1 — Read the honest cortex posture
 
 ```bash
-curl -s $AMARU/v1/honest | jq '{doctrine, memory, receipts, lambda_uniqueness}'
-# memory: "7-chakra cortex; Cardano-anchored receipts are demo-seeded, not on-chain mainnet."
-# receipts: "DSSE envelopes from the amaru tick endpoint; Sigstore CI signing PENDING (PLACEHOLDER)."
+curl -s $A11OY/api/a11oy/v1/honest | jq '{doctrine, memory, receipts, lambda}'
+# memory: "recall is cited; Cardano-anchored receipts are demo-seeded, not on-chain mainnet."
+# receipts: "DSSE envelopes; Sigstore CI signing roadmap (live sigs PLACEHOLDER)."
+# lambda: "Λ = Conjecture 1 (machine-checked false as a universal theorem); conditional Λ proven."
 ```
 
-> **Honest note.** Live tick signatures are `PLACEHOLDER` (`amaru-scheduler-stub-v1`); the lake's
-> `khipu/amaru_receipts.ndjson` carries a **real** ECDSA-P256 signature you can verify
+> **Honest note.** Live recall/tick signatures are `PLACEHOLDER`; the lake's
+> `khipu/*.ndjson` carries a **real** ECDSA-P256 signature you can verify
 > (**[recipe 01](01-verify-a-receipt-end-to-end.md)**). Cardano anchoring is demo-seeded — see
 > **[recipe 10](10-cardano-dsse-blood-ledger.md)**.
 
-### Step 2 — Inspect the per-chakra reasoning steps
+### Step 2 — Inspect the cited memory steps
 
 ```bash
-curl -s -X POST $AMARU/scheduler/tick -d '{}' \
-  | jq '.steps[] | {chakra, verdict: .output.verdict, receipt_seq, stubbed}'
+curl -s -X POST $A11OY/api/a11oy/v2/unay/recall -d '{"query":"locked","k":5}' \
+  | jq '.items[] | {text, receipt_seq, source}'
 ```
 
-The 7-chakra serpentine pipeline (root → sacral → solar → heart → throat → third_eye → crown)
-runs single-threaded ASCEND/DESCEND. Each chakra emits one receipt-trace entry with its own
-verdict and `receipt_seq` — that sequence number is the citation index into the chain.
+Each recalled chunk emits its own `receipt_seq` — that sequence number is the citation index into
+the chain. The historical 7-chakra serpentine framing (root → … → crown) was the *amaru*
+prototype's internal scheduler; the shipping recall path exposes the same cited-receipt contract.
 
 ### Step 3 — Decode the DSSE payload
 
 ```bash
-curl -s -X POST $AMARU/scheduler/tick -d '{}' \
+curl -s -X POST $A11OY/api/a11oy/v1/mcp/call \
+  -d '{"tool":"a11oy_gate","args":{}}' \
   | jq -r '.dsse.payload' | base64 -d | jq .
 # => {"hash":"…","prevHash":"…","seq":N}  — the signed body of the tick receipt
 ```
 
-The payload is the canonical receipt body; `dsse.payloadType` is
-`application/vnd.szl.amaru.receipt+json`. The signature covers the DSSE PAE of this payload
+The payload is the canonical receipt body. The signature covers the DSSE PAE of this payload
 (see **[recipe 01](01-verify-a-receipt-end-to-end.md)** for the PAE math).
 
 ### Step 4 — Cited reasoning: every claim points to a receipt
 
-The amaru contract is "every inference cites its source." In a RAG answer, each cited memory
+The contract is "every recalled memory cites its source." In a RAG answer, each cited memory
 chunk carries the `receipt_seq` of the write that created it, so a reader can pull and verify the
-exact receipt behind any sentence. Query the chain browser:
+exact receipt behind any sentence.
 
 ```bash
-curl -s "$AMARU/receipts?limit=5" | jq '{total, head_seq, items}'
-# (total resets to 0 on Space restart; run a tick first to populate the chain)
+curl -s "$A11OY/khipu/log?limit=5" | jq '{total, head_seq, items}'
+# (total resets to 0 on Space restart; run a recall/tick first to populate the chain)
 ```
 
 ### Step 5 — Overwatch invariants
 
 ```bash
-curl -s $AMARU/overwatch/snapshot | jq .
-# R0513 6-invariant panel — the cortex self-audit board.
+curl -s $A11OY/api/a11oy/v1/honest | jq '.invariants'
+# The cortex self-audit board: locked 749/14/163, trust < 100%, Λ = Conjecture 1.
 ```
 
 ---
 
 ## What you proved
 
-A reasoning step in amaru is inseparable from its receipt. You can take any chakra verdict, find
+A recalled memory in a11oy is inseparable from its receipt. You can take any cited memory, find
 its `receipt_seq`, decode the DSSE payload, and (for lake receipts) verify the signature — closing
 the loop from *claim* to *cryptographic provenance*.
 
@@ -110,7 +116,7 @@ the loop from *claim* to *cryptographic provenance*.
 - **[01 — Verify a receipt end-to-end](01-verify-a-receipt-end-to-end.md)** — verify the receipts this cites.
 - **[10 — Cardano-anchored DSSE blood ledger](10-cardano-dsse-blood-ledger.md)** — anchor the chain.
 - **[08 — Receipt knot algebra](08-receipt-knot-algebra.md)** — the chain's topology.
-- Live: [amaru](https://szlholdings-amaru.hf.space) · Repo: [amaru](https://github.com/szl-holdings/amaru)
+- Live: [a11oy](https://szlholdings-a11oy.hf.space) (hosts the Provenance Anchor / memory role; codename *amaru* retired)
 
 ## Cite this recipe
 
@@ -120,7 +126,7 @@ the loop from *claim* to *cryptographic provenance*.
   author       = {{SZL Holdings}},
   year         = {2026},
   howpublished = {\url{https://github.com/szl-holdings/szl-cookbook/blob/main/recipes/05-memory-attested-reasoning.md}},
-  note         = {7-chakra cortex; live sigs PLACEHOLDER, lake sigs real. Doctrine v11 c7c0ba17.}
+  note         = {Cited recall inside a11oy; live sigs PLACEHOLDER, lake sigs real. Doctrine v11 c7c0ba17.}
 }
 ```
 
