@@ -69,10 +69,12 @@ Stream successive `/v1/lambda` snapshots and compute the syndrome each tick. A p
 non-trivial syndrome — not a single noisy blip — is the drift signal. Decode (minimum-weight
 matching, conceptually) to localize the most likely drifted axis.
 
-### Step 4 — Route the alert to sentra
+### Step 4 — Route the alert to the policy gate
 
-A confirmed drift syndrome is an action; feed it to sentra's `/v1/verdict` so the response is itself
-gated and receipted (**[recipe 04](04-drone-counter-uas-verdict.md)** shows the verdict shape).
+A confirmed drift syndrome is an action; feed it to the live a11oy gate
+(`/api/a11oy/v1/mcp/call`, tool `a11oy_gate`) so the response is itself gated and receipted
+(**[recipe 04](04-drone-counter-uas-verdict.md)** shows the verdict shape). The Policy role
+(internal codename *sentra* — retired) ships inside a11oy; there is no standalone `sentra` Space.
 
 ### Step 5 — Tie drift to the PAC-Bayes margin
 
