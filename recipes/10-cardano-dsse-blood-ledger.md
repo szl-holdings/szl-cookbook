@@ -4,11 +4,12 @@
 >
 > **Headline number: N receipts → 1 Merkle root → 1 on-chain metadatum.**
 
-amaru calls its receipt chain the *yawar* (blood) ledger. Anchoring its Merkle root on Cardano L1
+The memory cortex (Provenance Anchor role; internal codename *amaru* — retired, now inside a11oy)
+calls its receipt chain the *yawar* (blood) ledger. Anchoring its Merkle root on Cardano L1
 gives an independent, public proof-of-existence. This is **hash anchoring only** — not a token,
 not custodial, not a transfer of value.
 
-> **HONEST PREREQUISITE — READ FIRST.** amaru's live `/v1/honest` states:
+> **HONEST PREREQUISITE — READ FIRST.** a11oy's live `/v1/honest` states:
 > *"Cardano-anchored receipts are demo-seeded, not on-chain mainnet."* Mainnet (and even funded
 > testnet) submission requires **founder credentials** (a funded wallet + signing keys). This
 > recipe therefore has two paths:
@@ -111,7 +112,7 @@ receipt — itself verifiable by recipe 01.
 
 - **[01 — Verify a receipt end-to-end](01-verify-a-receipt-end-to-end.md)** — verify before anchoring.
 - **[05 — Memory-attested reasoning](05-memory-attested-reasoning.md)** — the chain you're anchoring.
-- Live: [amaru](https://szlholdings-amaru.hf.space) · [CIP-20](https://cips.cardano.org/cip/CIP-20)
+- Live: [a11oy](https://szlholdings-a11oy.hf.space) (hosts the Provenance Anchor / memory role; codename *amaru* retired) · [CIP-20](https://cips.cardano.org/cip/CIP-20)
 
 ## Cite this recipe
 
