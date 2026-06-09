@@ -1,13 +1,14 @@
 # Verify a receipt end-to-end
 
-> **Pull a real Khipu receipt from `szl-lake`, validate its ECDSA-P256 DSSE signature against the org cosign key, then re-check it through `a11oy /v1/verify` and read the doctrine posture from `sentra`.**
+> **Pull a real Khipu receipt from `szl-lake`, validate its ECDSA-P256 DSSE signature against the org cosign key, then re-check it through `a11oy /v1/verify` and read the doctrine posture from the a11oy policy gate.**
 >
 > **Headline number: 1 receipt → 1 cryptographic VALID in < 60 seconds, zero credentials.**
 
 This is the canonical first-touch recipe. It is the most important thing the cookbook does:
 it proves, on your own machine, that an SZL governance receipt is what it claims to be.
 
-The signature checked here is **real** — not a placeholder. The amaru tick receipt in the live
+The signature checked here is **real** — not a placeholder. The memory-cortex tick receipt (file
+`amaru_receipts.ndjson` — the historical codename is retained only in the lake file name) in the live
 [`szl-lake`](https://huggingface.co/datasets/SZLHOLDINGS/szl-lake) dataset is signed with the
 organization cosign key published at
 [`.github/cosign.pub`](https://github.com/szl-holdings/.github/blob/main/cosign.pub),
@@ -129,14 +130,16 @@ curl -s -X POST https://szlholdings-a11oy.hf.space/api/a11oy/v1/verify \
   | jq .
 ```
 
-> **Honest note.** The a11oy / sentra Spaces sleep on Hugging Face's free tier and may return
+> **Honest note.** The a11oy and killinchu Spaces sleep on Hugging Face's free tier and may return
 > "Space is in error" until warmed — open the Space URL once to wake it. The lake-based
-> verification in Steps 1–3 needs no Space at all.
+> verification in Steps 1–3 needs no Space at all. There are no standalone `amaru` / `sentra`
+> Spaces (retired internal codenames); those roles ship inside a11oy.
 
-### Step 5 (optional, live) — Read the verdict posture from `sentra`
+### Step 5 (optional, live) — Read the verdict posture from the policy gate
 
 ```bash
-curl -s https://szlholdings-sentra.hf.space/api/sentra/v1/honest | jq '{doctrine, slsa}'
+# The Policy role (codename sentra retired) ships inside a11oy.
+curl -s https://szlholdings-a11oy.hf.space/api/a11oy/v1/honest | jq '{doctrine, slsa}'
 # => { "doctrine": "v11", "slsa": "L1 (honest)" }
 ```
 
@@ -154,11 +157,11 @@ That is the SZL invariant `receipts.in ≡ receipts.out`, made concrete.
 
 ## See also
 
-- **[02 — Deploy the 5-flagship UDS bundle](02-deploy-5-flagship-uds-bundle.md)** — run the organs that emit these receipts.
+- **[02 — Deploy the SZL UDS bundle](02-deploy-5-flagship-uds-bundle.md)** — run the organs that emit these receipts.
 - **[06 — Verify cosign + Rekor for SLSA L1](06-cosign-rekor-slsa-l1.md)** — verify the *container* that runs the organ.
 - **[08 — Receipt knot algebra](08-receipt-knot-algebra.md)** — the topology of receipt chains.
 - **[12 — Doctrine ledger query](12-doctrine-ledger-query.md)** — programmatic access to 749/14/163.
-- Live: [amaru](https://szlholdings-amaru.hf.space) · [a11oy](https://szlholdings-a11oy.hf.space) · [sentra](https://szlholdings-sentra.hf.space)
+- Live: [a11oy](https://szlholdings-a11oy.hf.space) · [killinchu](https://szlholdings-killinchu.hf.space) (the two shipping flagships; codenames *amaru*/*sentra* retired)
 
 ## Cite this recipe
 
