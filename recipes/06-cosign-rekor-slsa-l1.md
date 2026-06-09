@@ -6,7 +6,7 @@
 
 SZL signs container images with **keyless** cosign: the signing identity is a GitHub Actions
 OIDC token, the certificate is issued by Fulcio, and the entry is recorded in the public Rekor
-transparency log. This recipe verifies that chain for any of the five flagships.
+transparency log. This recipe verifies that chain for the two shipping flagships (a11oy, killinchu).
 
 > **Honest posture.** SZL claims **SLSA L1** (honest) — SBOM + DCO + provenance attestation — not
 > L2/L3. The *image* signatures are real keyless cosign; the *runtime receipt* signatures in the
@@ -101,7 +101,8 @@ slsa-verifier verify-image ghcr.io/szl-holdings/amaru:uds-v0.2.0 \
 ### Step 4 — Cross-check the doctrine the image declares
 
 ```bash
-curl -s https://szlholdings-amaru.hf.space/api/amaru/v1/honest | jq '{doctrine, slsa}'
+# a11oy and killinchu are the two shipping flagships; query either live Space.
+curl -s https://szlholdings-a11oy.hf.space/api/a11oy/v1/honest | jq '{doctrine, slsa}'
 # => { "doctrine": "v11", "slsa": "L1 (honest)" }
 ```
 
@@ -109,7 +110,7 @@ curl -s https://szlholdings-amaru.hf.space/api/amaru/v1/honest | jq '{doctrine, 
 
 ## See also
 
-- **[02 — Deploy the 5-flagship UDS bundle](02-deploy-5-flagship-uds-bundle.md)** — deploy the verified images.
+- **[02 — Deploy the SZL UDS bundle](02-deploy-5-flagship-uds-bundle.md)** — deploy the verified images.
 - **[01 — Verify a receipt end-to-end](01-verify-a-receipt-end-to-end.md)** — verify the runtime receipts.
 - **[15 — Air-gapped install](15-air-gapped-install.md)** — verify before going offline.
 - Sigstore: [cosign](https://docs.sigstore.dev/cosign/overview/) · [Rekor search](https://search.sigstore.dev)
