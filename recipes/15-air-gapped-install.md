@@ -24,7 +24,7 @@ connected side, verifies it, and replays it inside the air gap.
 ```bash
 # ── CONNECTED SIDE ────────────────────────────────────────────────
 # 1. Verify, then pull the bundle to a portable tarball.
-cosign verify ghcr.io/szl-holdings/amaru:uds-v0.2.0 \
+cosign verify ghcr.io/szl-holdings/a11oy:uds-v0.2.0 \
   --certificate-identity-regexp="^https://github.com/szl-holdings/" \
   --certificate-oidc-issuer="https://token.actions.githubusercontent.com"
 uds pull oci://ghcr.io/szl-holdings/szl-uds-bundle:uds-v0.2.0 \
@@ -65,18 +65,20 @@ This is the offline analogue of the Rekor check: it proves the bytes didn't chan
 ### Step 4 — Deploy offline
 
 `uds deploy` reads only from the local tarball. Watch the pods come up and run the recipe-02 health
-loop against `localhost` inside the cluster — all five organs must report `v11 / 749 / 14 / 163 /
-c7c0ba17`.
+loop against `localhost` inside the cluster — both shipping organs (a11oy, killinchu) must report
+`v11 / 749 / 14 / 163 / c7c0ba17`.
 
 ### Step 5 — Confirm doctrine + receipts work offline
 
 ```bash
-for o in a11oy sentra amaru killinchu rosie; do
+# Only a11oy and killinchu publish images; the Provenance Anchor / Operator / Policy roles
+# (codenames amaru/rosie/sentra retired) ship inside a11oy, not as separate deployments.
+for o in a11oy killinchu; do
   kubectl -n szl exec deploy/$o -- curl -s localhost:8080/api/$o/v1/honest | jq -r .doctrine
 done
-# => v11  (×5)
-# amaru emits receipts with no network:
-kubectl -n szl exec deploy/amaru -- curl -s -X POST localhost:8080/api/amaru/scheduler/tick -d '{}' \
+# => v11  (×2)
+# a11oy emits receipts with no network (memory cortex / Provenance Anchor role lives here):
+kubectl -n szl exec deploy/a11oy -- curl -s -X POST localhost:8080/api/a11oy/v1/mcp/call -d '{"tool":"a11oy_gate","args":{}}' \
   | jq '.tick_receipt.hash'
 ```
 
