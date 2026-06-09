@@ -1,6 +1,6 @@
 # Build your own organ
 
-> **Add a sixth organ to the mesh: a FastAPI service that speaks the SZL contract — `/healthz`, `/v1/honest`, and a DSSE-receipted action endpoint — so it deploys in the UDS bundle next to the five flagships.**
+> **Add a new organ to the mesh: a FastAPI service that speaks the SZL contract — `/healthz`, `/v1/honest`, and a DSSE-receipted action endpoint — so it deploys in the UDS bundle next to the shipping flagships (a11oy, killinchu).**
 >
 > **Headline number: 1 contract, 3 required endpoints, 0 kernel changes.**
 
@@ -91,10 +91,11 @@ Add a `zarf.yaml` + `uds-bundle.yaml` for your organ and fold it into the bundle
 **[recipe 13 — Build a UDS bundle from scratch](13-build-uds-bundle-from-scratch.md)**. Reuse the
 three CRDs: `LambdaGate`, `KhipuReceipt`, `DoctrineLock`.
 
-### Step 5 — Register with rosie
+### Step 5 — Register with the Operator console
 
-`rosie` is the operator console / nervous system; expose your organ's `/v1/*` surface and it
-appears in the mesh health board. Confirm with `curl .../api/rosie/v1/mcp/tools`.
+The **Operator** role (internal codename *rosie* — retired; ships inside a11oy, not a standalone
+service) is the operator console / nervous system. Expose your organ's `/v1/*` surface and it
+appears in the mesh health board. Confirm with `curl https://szlholdings-a11oy.hf.space/api/a11oy/v1/mcp/tools`.
 
 ---
 
