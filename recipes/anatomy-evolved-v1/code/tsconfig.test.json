@@ -4,6 +4,7 @@
     "ignoreDeprecations": "6.0",
     "module": "CommonJS",
     "moduleResolution": "node",
+    "types": ["node"],
     "noEmit": false,
     "outDir": "dist-test",
     "rootDir": ".",
