@@ -48,8 +48,8 @@ print("lake:", idx["kernel_commit"], idx["declarations"], idx["axioms"], idx["so
 
 ```python
 import requests
-# Only the two shipping flagships expose a live /v1/honest. The Provenance Anchor / Operator /
-# Policy roles (codenames amaru / rosie / sentra — retired) ship inside a11oy and are NOT
+# Only the two shipping flagships expose a live /v1/honest. The a11oy Memory / Operator /
+# Sentinel verticals (codenames amaru / rosie / sentra — retired) ship inside a11oy and are NOT
 # separate Spaces; do not query them as standalone hosts.
 FLAGSHIPS = {
     "a11oy":     "https://szlholdings-a11oy.hf.space/api/a11oy/v1/honest",

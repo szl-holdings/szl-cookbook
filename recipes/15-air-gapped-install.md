@@ -71,13 +71,13 @@ loop against `localhost` inside the cluster — both shipping organs (a11oy, kil
 ### Step 5 — Confirm doctrine + receipts work offline
 
 ```bash
-# Only a11oy and killinchu publish images; the Provenance Anchor / Operator / Policy roles
+# Only a11oy and killinchu publish images; the a11oy Memory / Operator / Sentinel verticals
 # (codenames amaru/rosie/sentra retired) ship inside a11oy, not as separate deployments.
 for o in a11oy killinchu; do
   kubectl -n szl exec deploy/$o -- curl -s localhost:8080/api/$o/v1/honest | jq -r .doctrine
 done
 # => v11  (×2)
-# a11oy emits receipts with no network (memory cortex / Provenance Anchor role lives here):
+# a11oy emits receipts with no network (memory cortex / a11oy Memory lives here):
 kubectl -n szl exec deploy/a11oy -- curl -s -X POST localhost:8080/api/a11oy/v1/mcp/call -d '{"tool":"a11oy_gate","args":{}}' \
   | jq '.tick_receipt.hash'
 ```

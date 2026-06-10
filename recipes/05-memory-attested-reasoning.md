@@ -5,7 +5,7 @@
 >
 > **Headline number: 1 recall → N cited memories → 1 hash-chained DSSE receipt.**
 
-The **Provenance Anchor** role — the memory cortex historically prototyped under the internal
+The **a11oy Memory** role — the memory cortex historically prototyped under the internal
 codename *amaru* — is shipped today **inside a11oy**, not as a separate Space. Its contract is
 unusual: it refuses to surface a recalled memory without also surfacing the receipt for the write
 that created it. This recipe drives the live a11oy memory path and shows the cited receipt chain.
@@ -116,7 +116,7 @@ the loop from *claim* to *cryptographic provenance*.
 - **[01 — Verify a receipt end-to-end](01-verify-a-receipt-end-to-end.md)** — verify the receipts this cites.
 - **[10 — Cardano-anchored DSSE blood ledger](10-cardano-dsse-blood-ledger.md)** — anchor the chain.
 - **[08 — Receipt knot algebra](08-receipt-knot-algebra.md)** — the chain's topology.
-- Live: [a11oy](https://szlholdings-a11oy.hf.space) (hosts the Provenance Anchor / memory role; codename *amaru* retired)
+- Live: [a11oy](https://szlholdings-a11oy.hf.space) (hosts the a11oy Memory; codename *amaru* retired)
 
 ## Cite this recipe
 

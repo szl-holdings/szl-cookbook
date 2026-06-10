@@ -80,7 +80,7 @@ the difference between a legitimate rewrite and a forgery.
 
 ### Step 5 — Tie it to live receipts
 
-Pull a live receipt chain from a11oy's memory cortex (Provenance Anchor role; codename *amaru*
+Pull a live receipt chain from a11oy's memory cortex (a11oy Memory; codename *amaru*
 retired) (**[recipe 05](05-memory-attested-reasoning.md)**), build its khipu tree,
 and compute the tag. Two ticks that differ only by commuting steps share a tag; a tampered tick
 does not.

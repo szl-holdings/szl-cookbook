@@ -73,7 +73,7 @@ matching, conceptually) to localize the most likely drifted axis.
 
 A confirmed drift syndrome is an action; feed it to the live a11oy gate
 (`/api/a11oy/v1/mcp/call`, tool `a11oy_gate`) so the response is itself gated and receipted
-(**[recipe 04](04-drone-counter-uas-verdict.md)** shows the verdict shape). The Policy role
+(**[recipe 04](04-drone-counter-uas-verdict.md)** shows the verdict shape). The a11oy Sentinel
 (internal codename *sentra* — retired) ships inside a11oy; there is no standalone `sentra` Space.
 
 ### Step 5 — Tie drift to the PAC-Bayes margin

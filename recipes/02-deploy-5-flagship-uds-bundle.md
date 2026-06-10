@@ -9,7 +9,7 @@ cosign-signed [Unified Defense Stack (UDS)](https://github.com/szl-holdings/uds-
 bundles built on UDS Core v1.5.0. This recipe deploys them and runs the mesh health check.
 
 > **Honest scope.** Only a11oy and killinchu are published images in the bundle today. The
-> Provenance Anchor, Operator, and Policy roles (internal codenames *amaru*, *rosie*, *sentra* —
+> a11oy Memory, Operator, and Sentinel verticals (internal codenames *amaru*, *rosie*, *sentra* —
 > retired) are roadmap; their live equivalents ship **inside a11oy**, not as separate images.
 > Do not expect `cosign verify` / `kubectl exec` to succeed for those role names.
 

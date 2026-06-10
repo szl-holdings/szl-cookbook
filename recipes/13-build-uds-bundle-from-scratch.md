@@ -7,8 +7,8 @@
 Recipe 02 *deploys* the published bundle. This recipe *builds* one, so you can package your own
 organ (**[recipe 07](07-build-your-own-organ.md)**) alongside the shipping flagships.
 
-> **Honest scope.** Only **a11oy** and **killinchu** publish GHCR images today. The Provenance
-> Anchor / Operator / Policy roles (internal codenames *amaru* / *rosie* / *sentra* — retired) do
+> **Honest scope.** Only **a11oy** and **killinchu** publish GHCR images today. The a11oy Memory /
+> Operator / Sentinel verticals (internal codenames *amaru* / *rosie* / *sentra* — retired) do
 > **not** have separate published images; they ship inside a11oy. The single-organ example below
 > uses the real `a11oy` image.
 
@@ -92,7 +92,7 @@ separate published images — their roles ship inside a11oy, so there is nothing
 
 ```yaml
 packages:
-  - { name: szl-a11oy,     path: ../a11oy,     ref: uds-v0.2.0 }   # hosts Provenance Anchor / Operator / Policy roles
+  - { name: szl-a11oy,     path: ../a11oy,     ref: uds-v0.2.0 }   # hosts a11oy Memory / Operator / Sentinel verticals
   - { name: szl-killinchu, path: ../killinchu, ref: uds-v0.2.0 }   # counter-UAS verdict flagship
   # - { name: szl-yourorgan, path: ../yourorgan, ref: uds-v0.2.0 } # your custom organ (recipe 07)
 ```

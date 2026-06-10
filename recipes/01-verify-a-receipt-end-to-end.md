@@ -138,7 +138,7 @@ curl -s -X POST https://szlholdings-a11oy.hf.space/api/a11oy/v1/verify \
 ### Step 5 (optional, live) — Read the verdict posture from the policy gate
 
 ```bash
-# The Policy role (codename sentra retired) ships inside a11oy.
+# The a11oy Sentinel (codename sentra retired) ships inside a11oy.
 curl -s https://szlholdings-a11oy.hf.space/api/a11oy/v1/honest | jq '{doctrine, slsa}'
 # => { "doctrine": "v11", "slsa": "L1 (honest)" }
 ```
