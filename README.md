@@ -89,6 +89,11 @@ and "see also" links. Recipes marked **live** run against the deployed Spaces to
 | 13 | [Build a UDS bundle from scratch](recipes/13-build-uds-bundle-from-scratch.md) | a11oy · killinchu | needs cluster |
 | 14 | [Replicate the Walrus α-gap measurement](recipes/14-replicate-walrus-alpha-gap.md) | killinchu | **live decoders** |
 | 15 | [Air-gapped install](recipes/15-air-gapped-install.md) | a11oy · killinchu | needs cluster |
+| 16 | [CALPHAD inverse-discovery](recipes/16-calphad-inverse-discovery.md) | a11oy | **live** ✅ |
+| 17 | [E8 lattice receipt verification](recipes/17-e8-lattice-receipt-verification.md) | a11oy | **live** ✅ |
+| 18 | [Governed materials prediction](recipes/18-governed-materials-prediction.md) | a11oy | **live** ✅ |
+| 19 | [Inverse-PINN physics discovery](recipes/19-inverse-pinn-physics-discovery.md) | a11oy | **live** ✅ |
+| 20 | [Evidence pack for auditors](recipes/20-evidence-pack-for-auditors.md) | a11oy | **live** ✅ |
 
 **Bonus engineering recipes** (TypeScript + Lean, shipped in-repo):
 [`knot-calculus-v1`](recipes/knot-calculus-v1/) · [`anatomy-evolved-v1`](recipes/anatomy-evolved-v1/) ·
