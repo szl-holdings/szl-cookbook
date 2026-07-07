@@ -8,6 +8,8 @@
 
 # SZL Cookbook
 
+> ⚠️ **DEPRECATED — recipe pages migrated to [`szl-holdings/docs-site`](https://github.com/szl-holdings/docs-site/tree/main/docs/cookbook/recipes) (published at `docs.szlholdings.com`).** This repo is **deprecated but NOT archived** — archival is a later founder step. See [`DEPRECATED.md`](./DEPRECATED.md). Runnable code trees remain here as the source of record.
+
 **The first-touch resource for using the SZL platform.**
 Worked, runnable recipes — each verified end-to-end against the live mesh, each carrying its own receipt.
 
