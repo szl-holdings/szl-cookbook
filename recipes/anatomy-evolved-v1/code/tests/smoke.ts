@@ -293,6 +293,77 @@ ok(
   );
 }
 
+// ─── T11: vessels raz-nihyeh CETERIS-PARIBUS monotonicity (documented invariant) ──
+// The T10 scan above varies several fields at once (entityType, jurisdiction and
+// isUBO all change across its nodes), so it does NOT actually exercise the
+// invariant documented at the top of vessels-raz-nihyeh-risk.ts:
+//   "monotone non-decreasing in shellDepth WITH ALL OTHER FIELDS HELD CONSTANT
+//    (ceteris paribus)"  —  Lean: ∀ d₁ ≤ d₂. score(d₁) ≤ score(d₂).
+// Here we hold every other field fixed and sweep shellDepth alone, across every
+// entityType × representative jurisdictions × isUBO, asserting non-decrease at
+// each adjacent step plus the score ∈ [0,1] bound at every point.
+{
+  const entityTypes: OwnershipNode["entityType"][] = [
+    "PERSON", "COMPANY", "TRUST", "FOUNDATION", "UNKNOWN",
+  ];
+  const jurisdictions = ["USA", "BVI", "Marshall Islands"];
+  const EPS = 1e-12;
+  let monotoneViolations = 0;
+  let boundViolations = 0;
+  let combos = 0;
+  for (const entityType of entityTypes) {
+    for (const jurisdiction of jurisdictions) {
+      for (const isUBO of [true, false]) {
+        combos++;
+        let prev = -Infinity;
+        for (let shellDepth = 0; shellDepth <= 12; shellDepth++) {
+          const s = razNihyehScore({
+            entityId: `cp_${entityType}_${jurisdiction}_${isUBO}_${shellDepth}`,
+            entityType,
+            jurisdiction,
+            shellDepth,
+            isUBO,
+          });
+          if (s.rawScore < 0 || s.rawScore > 1) boundViolations++;
+          if (s.rawScore < prev - EPS) monotoneViolations++;
+          prev = s.rawScore;
+        }
+      }
+    }
+  }
+  ok(
+    "T11_vessels_ceteris_paribus_monotone",
+    monotoneViolations === 0,
+    `${combos} field-combos × depth 0..12: ${monotoneViolations} monotonicity violations`,
+  );
+  ok(
+    "T11_vessels_score_in_unit_interval",
+    boundViolations === 0,
+    `${combos} combos × depth 0..12: ${boundViolations} out-of-[0,1] scores`,
+  );
+}
+
+// ─── T12: vessels raz-nihyeh clamp saturation at extreme shell depth ──────────
+// The [0,1] bound must hold even when the raw depth component alone would exceed
+// 1; clamp01 must saturate exactly at 1 (never overflow), and the derived rating
+// and investigation trigger must reflect that saturated DARK state.
+{
+  const saturated = razNihyehScore({
+    entityId: "cp_saturate",
+    entityType: "UNKNOWN",
+    jurisdiction: "Marshall Islands",
+    shellDepth: 1000,
+    isUBO: false,
+  });
+  ok(
+    "T12_vessels_clamp_saturates_at_one",
+    saturated.rawScore === 1 &&
+      saturated.razNihyehRating === "DARK" &&
+      saturated.triggersA11oyInvestigation === true,
+    `rawScore=${saturated.rawScore}, rating=${saturated.razNihyehRating}, triggers=${saturated.triggersA11oyInvestigation}`,
+  );
+}
+
 // ─── Final summary ───────────────────────────────────────────────────────────
 console.log("\n========================================");
 const passed = results.filter((r) => r.pass).length;
