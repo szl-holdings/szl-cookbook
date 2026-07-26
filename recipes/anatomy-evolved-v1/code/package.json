@@ -12,7 +12,7 @@
     "test:smoke": "bash scripts/run_smoke_tests.sh"
   },
   "devDependencies": {
-    "typescript": "^6.0.3",
-    "@types/node": "^26.1.0"
+    "typescript": "^7.0.2",
+    "@types/node": "^26.1.1"
   }
 }
