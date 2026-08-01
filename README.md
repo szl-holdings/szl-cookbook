@@ -10,10 +10,10 @@
 
 # SZL Cookbook
 
-> ⚠️ **DEPRECATED — recipe pages migrated to [`szl-holdings/docs-site`](https://github.com/szl-holdings/docs-site/tree/main/docs/cookbook/recipes) (published at `docs.szlholdings.com`).** This repo is **deprecated but NOT archived** — archival is a later founder step. See [`DEPRECATED.md`](./DEPRECATED.md). Runnable code trees remain here as the source of record.
+> **DEPRECATED — recipe pages migrated to [`szl-holdings/docs-site`](https://github.com/szl-holdings/docs-site/tree/main/docs/cookbook/recipes) (published through [GitHub Pages](https://szl-holdings.github.io/docs-site/cookbook/)).** This repo remains active only as the source of record for runnable code trees; it is not archived. See [`DEPRECATED.md`](./DEPRECATED.md).
 
 **The first-touch resource for using the SZL platform.**
-Worked, runnable recipes — each verified end-to-end against the live mesh, each carrying its own receipt.
+Worked recipes with explicit evidence states and runnable code where the repository includes it.
 
 [**Recipes**](#-recipes) · [**Quickstart**](#-quickstart-60-seconds) · [**Products**](#-the-two-products) · [**Honesty**](#-honesty-policy) · [**Cite**](#-cite-the-cookbook)
 
@@ -23,7 +23,7 @@ Worked, runnable recipes — each verified end-to-end against the live mesh, eac
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue?style=flat-square)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20434308.svg)](https://doi.org/10.5281/zenodo.20434308)
 
-[Hugging Face](https://huggingface.co/SZLHOLDINGS) · [GitHub Org](https://github.com/szl-holdings) · [Docs Site](https://szl-holdings.github.io/docs-site)
+[Hugging Face](https://huggingface.co/SZLHOLDINGS) · [GitHub Org](https://github.com/szl-holdings) · [Canonical Cookbook](https://szl-holdings.github.io/docs-site/cookbook/)
 
 `receipts.in ≡ receipts.out`
 
@@ -39,7 +39,25 @@ The SZL Cookbook is to the SZL platform what the
 [Hugging Face Cookbook](https://github.com/huggingface/cookbook) are to theirs: a library of
 copy-paste-able recipes that show, concretely, **how to use the products**. Here the products are
 the two SZL platforms — **a11oy** (the governed command platform) and **killinchu** (drones &
-vessels) — and every recipe is grounded in a *verified live artifact*, not a slideware claim.
+vessels). Each recipe owns its evidence state; the catalog does not make a blanket live claim.
+
+## Choose your route
+
+| Audience | Start here | Ownership |
+|----------|------------|-----------|
+| **Developer** | [Recipes](#-recipes) and the checked-in code trees | Run code from this repository; read the maintained narrative in the canonical docs site |
+| **Evaluator** | [Verify a receipt end-to-end](recipes/01-verify-a-receipt-end-to-end.md) | Check the named artifact and command; do not infer results for other recipes |
+| **Investor** | [Canonical Cookbook](https://szl-holdings.github.io/docs-site/cookbook/) and [SZL evidence](https://szl-holdings.github.io/docs-site/evidence/) | Use the published route for product context and evidence boundaries |
+
+## Recipe state contract
+
+- **LIVE**: an observed runtime-backed result with a named source and observation time.
+- **SAMPLE**: example input, configuration, or expected-output shape; safe to inspect, not runtime evidence.
+- **SIMULATED**: mocked or synthetic execution, including deterministic demonstrations.
+- **UNAVAILABLE**: the required endpoint, artifact, or dependency did not produce a usable result.
+
+A runnable command is not proof that it was run. Historical transcripts remain historical until
+their source and timestamp are refreshed.
 
 The signature first recipe — **[Verify a receipt end-to-end](recipes/01-verify-a-receipt-end-to-end.md)**
 — cryptographically validates a real ECDSA-P256 DSSE signature from the public
