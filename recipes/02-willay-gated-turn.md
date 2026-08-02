@@ -1,7 +1,7 @@
 # Recipe 02 — WILLAY: Gated Turn + Signed Receipt Verification
 
 **Time:** ~2 minutes  
-**Data label:** LIVE (against public a11oy HF Space endpoint)  
+**Data label:** LIVE endpoint target / SAMPLE transcript. Current availability is not asserted by this document.
 **Doctrine:** v11 LOCKED · 749/14/163 · c7c0ba17 · Λ = Conjecture 1  
 **License:** Apache-2.0  
 
@@ -187,7 +187,7 @@ The `signed_receipt` field on a declined `/messages` response:
 ## Sources
 
 - [szl-holdings/a11oy](https://github.com/szl-holdings/a11oy) — WILLAY source (`szl_willay_gateway.py`)
-- [szl-holdings/developers/WILLAY_API.md](https://github.com/szl-holdings/developers/blob/main/WILLAY_API.md) — full API reference
+- [Willay API — canonical developer docs](https://szl-holdings.github.io/docs-site/developers/willay_api) — active successor to the archived `szl-holdings/developers` page
 - [SZLHOLDINGS/lean-kernel](https://huggingface.co/spaces/SZLHOLDINGS/lean-kernel) — kernel verification
 - [SZL Doctrine v11](https://github.com/szl-holdings/.github/blob/main/doctrine/DOCTRINE_V11.md) — governance contract
 - [Anthropic Fable 5 / Mythos 5](https://platform.claude.com/docs/) — the governed inverse reference
