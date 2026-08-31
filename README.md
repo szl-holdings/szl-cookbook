@@ -1,3 +1,5 @@
+> ARCHIVED 2026-08-26. Canonical: https://github.com/szl-holdings/szl-forge (per repo description); former docs-site content consolidated into https://github.com/szl-holdings/a11oy-net. Statements below are historical, kept for provenance.
+
 > **SZL Holdings** · Doctrine v11 · Λ = Conjecture 1 (advisory, never "green"/theorem) · canonical [a-11-oy.com](https://a-11-oy.com)
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
